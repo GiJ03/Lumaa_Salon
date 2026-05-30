@@ -10,16 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --cream: #eee4d2;
       --dark: #2f3727;
-      --olive: #46523b;
       --gold: #b88a55;
       --soft-gold: #d6b176;
       --text: #eee7d6;
@@ -30,17 +25,13 @@
       min-height: 100%;
       font-family: "Jost", sans-serif;
       background: var(--cream);
-    }
-
-    body {
       overflow-x: hidden;
     }
 
     .page {
       min-height: 100vh;
       position: relative;
-      background:
-        linear-gradient(90deg, #efe4d2 0 50%, #2f3727 50% 100%);
+      background: linear-gradient(90deg, #efe4d2 0 50%, #2f3727 50% 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -52,10 +43,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0,0,0,.08), transparent 28%),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,.08), transparent 30%),
-        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=1200&q=80");
+      background: url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=1200&q=80");
       background-size: cover;
       background-position: center;
       opacity: .18;
@@ -149,16 +137,6 @@
       overflow: hidden;
     }
 
-    .experience-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.08), transparent 32%),
-        radial-gradient(circle at 30% 90%, rgba(184,138,85,.16), transparent 35%);
-      pointer-events: none;
-    }
-
     .choose {
       position: relative;
       text-align: center;
@@ -196,7 +174,6 @@
       overflow: hidden;
       cursor: pointer;
       background: #111;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
     }
 
     .card img {
@@ -267,18 +244,6 @@
       height: 1px;
       background: rgba(214,177,118,.65);
       margin: 18px auto 14px;
-      position: relative;
-    }
-
-    .line::after {
-      content: "✦";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: transparent;
-      color: var(--soft-gold);
-      font-size: .8rem;
     }
 
     .view {
@@ -303,11 +268,9 @@
     }
 
     .bottom-line {
-      position: relative;
       text-align: center;
       margin-top: 34px;
       color: #efe7d4;
-      z-index: 2;
     }
 
     .bottom-line .bold {
@@ -334,9 +297,7 @@
       padding: 16px;
     }
 
-    .overlay.open {
-      display: flex;
-    }
+    .overlay.open { display: flex; }
 
     .overlay-panel {
       width: min(100%, 900px);
@@ -388,17 +349,18 @@
         padding: 14px 0 28px;
       }
 
-      .brand h1 {
-        font-size: 4.6rem;
-      }
+      .brand h1 { font-size: 4.6rem; }
 
       .brand h2 {
         font-size: 1rem;
         letter-spacing: .45em;
       }
 
-      .tagline {
-        margin-top: 36px;
+      .tagline { margin-top: 36px; }
+
+      .tagline .main {
+        font-size: .82rem;
+        letter-spacing: .3em;
       }
 
       .tagline .small {
@@ -418,26 +380,18 @@
         letter-spacing: .34em;
       }
 
-      .choose .big {
-        font-size: 4.2rem;
-      }
+      .choose .big { font-size: 4.2rem; }
 
-      .cards {
-        gap: 16px;
-      }
+      .cards { gap: 16px; }
 
       .card {
         height: 280px;
         border-radius: 90px 90px 0 0;
       }
 
-      .card-content {
-        bottom: 20px;
-      }
+      .card-content { bottom: 20px; }
 
-      .card-content h3 {
-        font-size: 2.1rem;
-      }
+      .card-content h3 { font-size: 2.1rem; }
 
       .card-content p {
         font-size: .66rem;
@@ -461,9 +415,7 @@
         letter-spacing: .4em;
       }
 
-      .bottom-line .script {
-        font-size: 1.7rem;
-      }
+      .bottom-line .script { font-size: 1.7rem; }
     }
   </style>
 </head>
@@ -552,9 +504,21 @@
       }
     };
 
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    }
+
     function openPDF(type) {
-      overlayTitle.textContent = pdfs[type].title;
-      pdfFrame.src = pdfs[type].file;
+      const pdf = pdfs[type];
+
+      if (isIOS()) {
+        window.location.href = pdf.file;
+        return;
+      }
+
+      overlayTitle.textContent = pdf.title;
+      pdfFrame.src = pdf.file;
       overlay.classList.add("open");
     }
 
