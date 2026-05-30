@@ -5,19 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumaa Salon</title>
 
-  <link rel="icon" type="image/jpeg" href="Lumaa Logo Fav Icon- Olive Green.jpg">
-  <link rel="apple-touch-icon" href="Lumaa Logo Fav Icon- Olive Green.jpg">
+  <link rel="icon" type="image/jpeg" href="./Lumaa%20Logo%20Fav%20Icon-%20Olive%20Green.jpg?v=3">
+  <link rel="apple-touch-icon" href="./Lumaa%20Logo%20Fav%20Icon-%20Olive%20Green.jpg?v=3">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
       width: 100%;
@@ -27,9 +23,7 @@
       overflow-x: hidden;
     }
 
-    body {
-      color: #30392c;
-    }
+    body { color: #30392c; }
 
     .page {
       min-height: 100vh;
@@ -73,6 +67,9 @@
       height: auto;
       display: block;
       object-fit: contain;
+      mix-blend-mode: normal !important;
+      filter: none !important;
+      background: transparent;
     }
 
     .tagline {
@@ -198,6 +195,8 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      mix-blend-mode: normal !important;
+      filter: none !important;
     }
 
     .card-content {
@@ -283,9 +282,7 @@
       padding: 16px;
     }
 
-    .overlay.open {
-      display: flex;
-    }
+    .overlay.open { display: flex; }
 
     .overlay-panel {
       width: min(100%, 900px);
@@ -327,27 +324,21 @@
     }
 
     @media (max-width: 640px) {
-      .page {
-        padding: 18px 0 28px;
-      }
+      .page { padding: 18px 0 28px; }
 
       .brand-logo {
         width: 270px;
         max-width: 82vw;
       }
 
-      .tagline {
-        margin-top: 34px;
-      }
+      .tagline { margin-top: 34px; }
 
       .tagline-main {
         font-size: 0.78rem;
         letter-spacing: 0.3em;
       }
 
-      .tagline-script {
-        font-size: 2.6rem;
-      }
+      .tagline-script { font-size: 2.6rem; }
 
       .tagline-small {
         margin-top: 24px;
@@ -367,22 +358,16 @@
         letter-spacing: 0.32em;
       }
 
-      .choose-big {
-        font-size: 4rem;
-      }
+      .choose-big { font-size: 4rem; }
 
-      .cards {
-        gap: 16px;
-      }
+      .cards { gap: 16px; }
 
       .card {
         height: 280px;
         border-radius: 90px 90px 0 0;
       }
 
-      .card-photo {
-        border-radius: 90px 90px 0 0;
-      }
+      .card-photo { border-radius: 90px 90px 0 0; }
 
       .monogram {
         width: 48px;
@@ -390,22 +375,16 @@
         top: -23px;
       }
 
-      .card-content {
-        bottom: 18px;
-      }
+      .card-content { bottom: 18px; }
 
-      .card-content h3 {
-        font-size: 2.05rem;
-      }
+      .card-content h3 { font-size: 2.05rem; }
 
       .card-content p {
         font-size: 0.62rem;
         letter-spacing: 0.28em;
       }
 
-      .line {
-        margin: 12px auto 10px;
-      }
+      .line { margin: 12px auto 10px; }
 
       .view {
         font-size: 0.54rem;
@@ -424,9 +403,7 @@
         letter-spacing: 0.35em;
       }
 
-      .bottom-script {
-        font-size: 1.7rem;
-      }
+      .bottom-script { font-size: 1.7rem; }
     }
   </style>
 </head>
@@ -436,7 +413,11 @@
     <div class="poster">
 
       <div class="brand">
-        <img src="Lumaa Logo.jpg" alt="Lumaa Salon" class="brand-logo">
+        <img
+          src="./Lumaa%20Logo.jpg?v=3"
+          alt="Lumaa Salon"
+          class="brand-logo"
+        >
       </div>
 
       <div class="tagline">
@@ -458,7 +439,7 @@
 
           <article class="card" onclick="openPDF('men')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openPDF('men')">
             <div class="monogram">
-              <img src="Lumaa Logo Fav Icon- Olive Green.jpg" alt="Lumaa Icon">
+              <img src="./Lumaa%20Logo%20Fav%20Icon-%20Olive%20Green.jpg?v=3" alt="Lumaa Icon">
             </div>
             <div class="card-photo">
               <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=90" alt="Men Rate Card">
@@ -473,7 +454,7 @@
 
           <article class="card" onclick="openPDF('women')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openPDF('women')">
             <div class="monogram">
-              <img src="Lumaa Logo Fav Icon- Olive Green.jpg" alt="Lumaa Icon">
+              <img src="./Lumaa%20Logo%20Fav%20Icon-%20Olive%20Green.jpg?v=3" alt="Lumaa Icon">
             </div>
             <div class="card-photo">
               <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=90" alt="Women Rate Card">
@@ -513,8 +494,8 @@
     const overlayTitle = document.getElementById("overlayTitle");
 
     const pdfs = {
-      men: { file: "men.pdf", title: "Men Rate Card" },
-      women: { file: "women.pdf", title: "Women Rate Card" }
+      men: { file: "./men.pdf", title: "Men Rate Card" },
+      women: { file: "./women.pdf", title: "Women Rate Card" }
     };
 
     function isIOS() {
