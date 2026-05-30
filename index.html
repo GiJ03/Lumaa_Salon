@@ -5,45 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumaa Salon</title>
 
-  <link rel="icon" type="image/jpeg" href="logo-icon.jpg">
-  <link rel="apple-touch-icon" href="logo-icon.jpg">
+  <link rel="icon" href="./Lumaa%20Logo%20Fav%20Icon-%20Olive%20Green.jpg" />
+  <link rel="apple-touch-icon" href="./Lumaa%20Logo%20Fav%20Icon-%20Olive%20Green.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --cream: #efe4d2;
-      --dark: #30392c;
-      --gold: #b88a55;
-      --soft-gold: #d6b176;
-      --olive: #9ea37a;
-    }
-
-    html, body {
-      width: 100%;
-      min-height: 100%;
+    body {
       font-family: "Jost", sans-serif;
-      background: var(--cream);
+      background: #efe4d2;
       overflow-x: hidden;
     }
 
     .page {
       min-height: 100vh;
-      position: relative;
       background: linear-gradient(90deg, #efe4d2 0 50%, #30392c 50% 100%);
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 20px;
-      overflow: hidden;
+      padding: 24px 16px;
+      position: relative;
     }
 
     .page::before {
@@ -53,39 +37,27 @@
       background: url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=1200&q=80");
       background-size: cover;
       background-position: center;
-      opacity: .17;
-      filter: blur(1px);
+      opacity: .16;
       mix-blend-mode: multiply;
       pointer-events: none;
     }
 
     .poster {
-      position: relative;
       width: min(100%, 820px);
-      min-height: 920px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      position: relative;
       z-index: 2;
-    }
-
-    .brand {
       text-align: center;
-      padding-top: 20px;
-      width: 100%;
     }
 
     .brand-logo {
       width: min(430px, 84vw);
-      height: auto;
       display: block;
       margin: 0 auto;
       mix-blend-mode: multiply;
     }
 
     .tagline {
-      margin-top: 48px;
-      text-align: center;
+      margin-top: 46px;
       color: #38412f;
     }
 
@@ -97,36 +69,31 @@
 
     .tagline .script {
       font-family: "Great Vibes", cursive;
-      font-size: 3.2rem;
+      font-size: 3.1rem;
       color: #a77348;
-      line-height: .9;
-      margin-top: 4px;
     }
 
     .tagline .small {
-      margin-top: 34px;
-      font-size: .9rem;
-      letter-spacing: .38em;
+      margin-top: 28px;
+      font-size: .85rem;
+      letter-spacing: .35em;
       line-height: 2;
       color: #776047;
     }
 
     .experience-box {
       width: min(94%, 720px);
-      margin-top: 42px;
-      background: rgba(49, 58, 42, .96);
+      margin: 42px auto 0;
+      background: rgba(49,58,42,.96);
       border: 1px solid rgba(214,177,118,.75);
       border-radius: 180px 180px 0 0;
       padding: 38px 34px 34px;
       box-shadow: 0 30px 80px rgba(0,0,0,.35);
-      position: relative;
-      overflow: visible;
     }
 
     .choose {
-      text-align: center;
       color: #eee7d6;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .choose .small {
@@ -139,30 +106,26 @@
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(4rem, 10vw, 6.6rem);
       line-height: .8;
-      color: var(--soft-gold);
-      font-weight: 500;
+      color: #d6b176;
     }
 
     .cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 34px;
-      position: relative;
-      z-index: 2;
     }
 
     .card {
       position: relative;
       height: 390px;
+      cursor: pointer;
       border: 1px solid rgba(214,177,118,.75);
       border-radius: 130px 130px 0 0;
       overflow: visible;
-      cursor: pointer;
       background: #111;
     }
 
     .card-photo {
-      width: 100%;
       height: 100%;
       overflow: hidden;
       border-radius: 130px 130px 0 0;
@@ -174,21 +137,14 @@
       height: 100%;
       object-fit: cover;
       filter: grayscale(.25) brightness(.58) contrast(1.08);
-      transition: transform .5s ease, filter .5s ease;
       display: block;
-    }
-
-    .card:hover .card-photo img {
-      transform: scale(1.06);
-      filter: grayscale(.1) brightness(.72) contrast(1.12);
     }
 
     .card-photo::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.88), transparent 60%);
-      pointer-events: none;
+      background: linear-gradient(to top, rgba(0,0,0,.88), transparent 62%);
     }
 
     .monogram {
@@ -203,14 +159,12 @@
       z-index: 5;
       border: 2px solid rgba(214,177,118,.85);
       background: #fff;
-      box-shadow: 0 10px 28px rgba(0,0,0,.3);
     }
 
     .monogram img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .card-content {
@@ -218,23 +172,20 @@
       left: 0;
       right: 0;
       bottom: 30px;
-      text-align: center;
-      color: #fff;
       z-index: 4;
+      color: #fff;
     }
 
     .card-content h3 {
       font-family: "Cormorant Garamond", serif;
       font-size: 3.3rem;
-      font-weight: 600;
       letter-spacing: .04em;
     }
 
     .card-content p {
-      font-size: .95rem;
+      font-size: .9rem;
       letter-spacing: .38em;
-      color: var(--soft-gold);
-      margin-top: 4px;
+      color: #d6b176;
     }
 
     .line {
@@ -247,32 +198,31 @@
     .view {
       display: inline-flex;
       align-items: center;
-      gap: 16px;
-      font-size: .75rem;
-      letter-spacing: .34em;
-      color: var(--soft-gold);
+      gap: 14px;
+      font-size: .72rem;
+      letter-spacing: .32em;
+      color: #d6b176;
     }
 
     .arrow {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border: 1px solid rgba(214,177,118,.75);
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       letter-spacing: 0;
     }
 
     .bottom-line {
-      text-align: center;
       margin-top: 34px;
       color: #efe7d4;
     }
 
     .bottom-line .bold {
-      font-size: .95rem;
+      font-size: .9rem;
       letter-spacing: .55em;
     }
 
@@ -280,7 +230,7 @@
       margin-top: 8px;
       font-family: "Great Vibes", cursive;
       font-size: 2.2rem;
-      color: var(--soft-gold);
+      color: #d6b176;
     }
 
     .overlay {
@@ -295,9 +245,7 @@
       padding: 16px;
     }
 
-    .overlay.open {
-      display: flex;
-    }
+    .overlay.open { display: flex; }
 
     .overlay-panel {
       width: min(100%, 900px);
@@ -339,43 +287,26 @@
     }
 
     @media (max-width: 640px) {
-      .page {
-        padding: 0;
-        align-items: flex-start;
-      }
-
-      .poster {
-        width: 100%;
-        min-height: 100vh;
-        padding: 18px 0 28px;
-      }
-
-      .brand {
-        padding-top: 8px;
-      }
+      .page { padding: 18px 0 28px; }
 
       .brand-logo {
         width: 270px;
         max-width: 82vw;
       }
 
-      .tagline {
-        margin-top: 34px;
-      }
+      .tagline { margin-top: 34px; }
 
       .tagline .main {
         font-size: .78rem;
         letter-spacing: .3em;
       }
 
-      .tagline .script {
-        font-size: 2.6rem;
-      }
+      .tagline .script { font-size: 2.6rem; }
 
       .tagline .small {
-        margin-top: 28px;
+        margin-top: 24px;
         font-size: .64rem;
-        letter-spacing: .25em;
+        letter-spacing: .24em;
       }
 
       .experience-box {
@@ -390,22 +321,16 @@
         letter-spacing: .32em;
       }
 
-      .choose .big {
-        font-size: 4rem;
-      }
+      .choose .big { font-size: 4rem; }
 
-      .cards {
-        gap: 16px;
-      }
+      .cards { gap: 16px; }
 
       .card {
         height: 280px;
         border-radius: 90px 90px 0 0;
       }
 
-      .card-photo {
-        border-radius: 90px 90px 0 0;
-      }
+      .card-photo { border-radius: 90px 90px 0 0; }
 
       .monogram {
         width: 48px;
@@ -413,22 +338,16 @@
         top: -23px;
       }
 
-      .card-content {
-        bottom: 18px;
-      }
+      .card-content { bottom: 18px; }
 
-      .card-content h3 {
-        font-size: 2.05rem;
-      }
+      .card-content h3 { font-size: 2.05rem; }
 
       .card-content p {
         font-size: .62rem;
         letter-spacing: .28em;
       }
 
-      .line {
-        margin: 12px auto 10px;
-      }
+      .line { margin: 12px auto 10px; }
 
       .view {
         font-size: .54rem;
@@ -447,9 +366,7 @@
         letter-spacing: .35em;
       }
 
-      .bottom-line .script {
-        font-size: 1.7rem;
-      }
+      .bottom-line .script { font-size: 1.7rem; }
     }
   </style>
 </head>
@@ -458,9 +375,12 @@
   <section class="page">
     <div class="poster">
 
-      <div class="brand">
-        <img src="logo-main.jpg" alt="Lumaa Salon" class="brand-logo">
-      </div>
+      <img
+        src="./Lumaa%20Logo.jpg"
+        alt="Lumaa Salon"
+        class="brand-logo"
+        onerror="this.outerHTML='<div style=&quot;color:#30392c;font-size:28px;font-weight:600;padding:30px;&quot;>Lumaa Salon<br><small>Logo not found</small></div>'"
+      >
 
       <div class="tagline">
         <div class="main">BEAUTY. CONFIDENCE.</div>
@@ -479,9 +399,9 @@
 
         <div class="cards">
 
-          <article class="card" onclick="openPDF('men')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openPDF('men')">
+          <article class="card" onclick="openPDF('men')">
             <div class="monogram">
-              <img src="logo-icon.jpg" alt="Lumaa">
+              <img src="./Lumaa%20Logo%20Fav%20Icon-%20Olive%20Green.jpg" alt="Lumaa">
             </div>
             <div class="card-photo">
               <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=90" alt="Men Rate Card">
@@ -494,9 +414,9 @@
             </div>
           </article>
 
-          <article class="card" onclick="openPDF('women')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openPDF('women')">
+          <article class="card" onclick="openPDF('women')">
             <div class="monogram">
-              <img src="logo-icon.jpg" alt="Lumaa">
+              <img src="./Lumaa%20Logo%20Fav%20Icon-%20Olive%20Green.jpg" alt="Lumaa">
             </div>
             <div class="card-photo">
               <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=90" alt="Women Rate Card">
@@ -516,7 +436,6 @@
           <div class="script">The world will adjust.</div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -536,14 +455,8 @@
     const overlayTitle = document.getElementById("overlayTitle");
 
     const pdfs = {
-      men: {
-        file: "men.pdf",
-        title: "Men Rate Card"
-      },
-      women: {
-        file: "women.pdf",
-        title: "Women Rate Card"
-      }
+      men: { file: "./men.pdf", title: "Men Rate Card" },
+      women: { file: "./women.pdf", title: "Women Rate Card" }
     };
 
     function isIOS() {
@@ -555,7 +468,7 @@
       const pdf = pdfs[type];
 
       if (isIOS()) {
-        window.open(pdf.file, "_blank");
+        window.location.href = pdf.file;
         return;
       }
 
@@ -566,22 +479,17 @@
 
     function closePDF() {
       overlay.classList.remove("open");
-
       setTimeout(() => {
         pdfFrame.src = "";
       }, 250);
     }
 
     overlay.addEventListener("click", function(e) {
-      if (e.target === overlay) {
-        closePDF();
-      }
+      if (e.target === overlay) closePDF();
     });
 
     document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") {
-        closePDF();
-      }
+      if (e.key === "Escape") closePDF();
     });
   </script>
 </body>
