@@ -1,700 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lumaa Salon — Services</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumaa Salon</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
-      --olive-dk:   #4E6330;
-      --olive-md:   #7D9656;
-      --olive-glow: rgba(78,99,48,.4);
-      --brown-dk:   #7A5230;
-      --brown-md:   #B07848;
-      --brown-glow: rgba(122,82,48,.4);
-      --page:       #F2EFE6;
-      --text:       #24200E;
-      --text-2:     #6A5840;
-      --ease:       cubic-bezier(.4,0,.2,1);
+      --cream: #eee4d2;
+      --dark: #2f3727;
+      --olive: #46523b;
+      --gold: #b88a55;
+      --soft-gold: #d6b176;
+      --text: #eee7d6;
     }
 
-    /* Body never scrolls — main handles scrolling internally */
-    html, body { height: 100%; overflow: hidden; }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: "Jost", sans-serif;
+      background: var(--cream);
+    }
 
     body {
-      font-family: 'Jost', 'Segoe UI', system-ui, sans-serif;
-      background: var(--page);
-      display: flex;
-      flex-direction: column;
-    }
-
-    body::before {
-      content: '';
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-      background:
-        radial-gradient(ellipse 55% 45% at 20% 65%, rgba(125,150,86,.13) 0%, transparent 70%),
-        radial-gradient(ellipse 55% 45% at 80% 35%, rgba(176,120,72,.11) 0%, transparent 70%);
-    }
-
-    /* ══════════════════════════════════════
-       HEADER
-    ══════════════════════════════════════ */
-    header {
-      flex-shrink: 0;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 32px;
-      background: rgba(242,239,230,.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(125,150,86,.18);
-    }
-
-    .logo-img {
-      height: 72px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-    .logo-fallback {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-    }
-    .logo-fallback .lf-name {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      font-style: italic;
-      letter-spacing: .04em;
-      color: var(--olive-dk);
-      line-height: 1;
-    }
-    .logo-fallback .lf-sub {
-      font-family: 'Jost', sans-serif;
-      font-size: .58rem;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--brown-md);
-      font-weight: 600;
-    }
-
-    /* Tablet header */
-    @media (max-width: 900px) {
-      header { padding: 12px 20px; }
-      .logo-img { height: 56px; }
-      .logo-fallback .lf-name { font-size: 1.85rem; }
-    }
-    /* Mobile header */
-    @media (max-width: 640px) {
-      header { padding: 10px 18px; }
-      .logo-img { height: 44px; }
-      .logo-fallback .lf-name { font-size: 1.45rem; }
-      .logo-fallback .lf-sub  { font-size: .52rem; letter-spacing: .22em; }
-    }
-    /* Landscape phone header */
-    @media (max-height: 500px) {
-      header { padding: 7px 16px; }
-      .logo-img { height: 32px; }
-      .logo-fallback .lf-name { font-size: 1.1rem; }
-    }
-
-    /* ══════════════════════════════════════
-       MAIN
-       overflow-y:auto = main scrolls when
-       needed; justify-content:center always
-       centers without clipping the top.
-    ══════════════════════════════════════ */
-    main {
-      flex: 1;
-      min-height: 0;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0 20px;
-      overflow-y: auto;
       overflow-x: hidden;
-      /* hide scrollbar across all browsers */
-      scrollbar-width: none;
-      -ms-overflow-style: none;
     }
-    main::-webkit-scrollbar { display: none; }
 
-    @media (max-width: 900px) { main { padding: 0 16px; } }
-    @media (max-width: 640px) {
-      main {
-        justify-content: flex-start;   /* no giant gaps on tall phones */
-        padding: 36px 16px 20px;       /* fixed top spacing matches iPhone SE */
-      }
+    .page {
+      min-height: 100vh;
+      position: relative;
+      background:
+        linear-gradient(90deg, #efe4d2 0 50%, #2f3727 50% 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
     }
-    @media (max-height: 500px) { main { padding: 0 12px; } }
 
-    /* ══════════════════════════════════════
-       CONTENT GROUP
-    ══════════════════════════════════════ */
-    .content-group {
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,0,0,.08), transparent 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.08), transparent 30%),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=1200&q=80");
+      background-size: cover;
+      background-position: center;
+      opacity: .18;
+      filter: blur(1px);
+      mix-blend-mode: multiply;
+    }
+
+    .poster {
+      position: relative;
+      width: min(100%, 820px);
+      min-height: 920px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      padding: 24px 0 18px;
-      width: 100%;
+      z-index: 2;
     }
 
-    @media (max-width: 900px) { .content-group { gap: 16px; padding: 20px 0 16px; } }
-    @media (max-width: 640px) { .content-group { gap: 10px; padding: 14px 0 8px; width: 100%; align-items: center; } }
-    @media (max-height: 500px) {
-      .content-group { gap: 10px; padding: 8px 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .brand {
+      text-align: center;
+      padding-top: 30px;
+      color: var(--dark);
     }
 
-    /* ══════════════════════════════════════
-       PAGE HEADING
-    ══════════════════════════════════════ */
-    .page-heading { text-align: center; }
-
-    .page-heading h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: .02em;
-      line-height: 1.05;
-    }
-
-    .page-heading p {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(.58rem, .85vw, .72rem);
-      font-weight: 600;
-      color: var(--text-2);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 900px) {
-      .page-heading h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
-      .page-heading p  { font-size: .65rem; margin-top: 8px; }
-    }
-    @media (max-width: 640px) {
-      .page-heading { text-align: center; width: 100%; }
-      .page-heading h1 { font-size: 1.85rem; line-height: 1.08; }
-      .page-heading p  { font-size: .6rem; letter-spacing: .13em; margin-top: 5px; }
-    }
-    @media (max-height: 500px) {
-      .page-heading h1 { font-size: 1.2rem; }
-      .page-heading p  { font-size: .52rem; margin-top: 3px; }
-    }
-
-    /* ══════════════════════════════════════
-       CARDS ROW
-    ══════════════════════════════════════ */
-    .cards {
+    .brand-icon {
+      width: 56px;
+      height: 86px;
+      border: 1px solid rgba(184,138,85,.55);
+      border-radius: 50px;
+      margin: 0 auto 18px;
       display: flex;
-      gap: 20px;
       align-items: center;
       justify-content: center;
+      color: var(--gold);
+      font-size: 28px;
     }
 
-    @media (max-width: 900px) { .cards { gap: 14px; } }
-    @media (max-width: 640px) { .cards { gap: 10px; width: 100%; max-width: 390px; align-items: stretch; justify-content: center; } }
-    @media (max-height: 500px) { .cards { gap: 10px; } }
+    .brand h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(4rem, 12vw, 7.4rem);
+      font-weight: 500;
+      letter-spacing: .04em;
+      line-height: .8;
+      color: #303a2b;
+    }
 
-    /* ══════════════════════════════════════
-       CARD — DESKTOP / TABLET
-       Square, full-bleed photo, overlay text
-    ══════════════════════════════════════ */
+    .brand h2 {
+      margin-top: 12px;
+      font-size: clamp(1.1rem, 3vw, 1.8rem);
+      letter-spacing: .55em;
+      font-weight: 400;
+      color: #9b7048;
+    }
+
+    .tagline {
+      margin-top: 56px;
+      text-align: center;
+      color: #38412f;
+    }
+
+    .tagline .main {
+      font-size: 1rem;
+      letter-spacing: .42em;
+      font-weight: 500;
+    }
+
+    .tagline .script {
+      font-family: "Great Vibes", cursive;
+      font-size: 3.2rem;
+      color: #a77348;
+      line-height: .9;
+      margin-top: 4px;
+    }
+
+    .tagline .small {
+      margin-top: 34px;
+      font-size: .9rem;
+      letter-spacing: .38em;
+      line-height: 2;
+      color: #776047;
+    }
+
+    .experience-box {
+      width: min(94%, 720px);
+      margin-top: 42px;
+      background: rgba(49, 58, 42, .96);
+      border: 1px solid rgba(214,177,118,.75);
+      border-radius: 180px 180px 0 0;
+      padding: 38px 34px 34px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.08), transparent 32%),
+        radial-gradient(circle at 30% 90%, rgba(184,138,85,.16), transparent 35%);
+      pointer-events: none;
+    }
+
+    .choose {
+      position: relative;
+      text-align: center;
+      color: var(--text);
+      margin-bottom: 26px;
+    }
+
+    .choose .small {
+      font-size: 1rem;
+      letter-spacing: .45em;
+      font-weight: 500;
+    }
+
+    .choose .big {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(4rem, 10vw, 6.6rem);
+      line-height: .8;
+      color: var(--soft-gold);
+      font-weight: 500;
+    }
+
+    .cards {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      z-index: 2;
+    }
+
     .card {
-      width: clamp(240px, 28vw, 340px);
-      height: clamp(240px, 28vw, 340px);
-      border-radius: 20px;
+      position: relative;
+      height: 390px;
+      border: 1px solid rgba(214,177,118,.75);
+      border-radius: 130px 130px 0 0;
       overflow: hidden;
       cursor: pointer;
-      border: none;
-      position: relative;
-      box-shadow: 0 6px 28px rgba(0,0,0,.14);
-      transition: transform .32s var(--ease), box-shadow .32s var(--ease);
-      flex-shrink: 0;
+      background: #111;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
     }
 
-    @media (min-width: 1400px) {
-      .card { width: clamp(300px, 22vw, 420px); height: clamp(300px, 22vw, 420px); }
-    }
-    @media (max-width: 900px) {
-      .card { width: clamp(200px, 34vw, 300px); height: clamp(200px, 34vw, 300px); border-radius: 16px; }
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.25) brightness(.58) contrast(1.08);
+      transition: transform .5s ease, filter .5s ease;
     }
 
-    .card:hover { transform: translateY(-8px); box-shadow: 0 22px 52px rgba(0,0,0,.2); }
-    @media (hover: none) { .card:hover { transform: none; box-shadow: 0 6px 28px rgba(0,0,0,.14); } }
-
-    /* Photo fills full card on desktop */
-    .card__photo { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .card__photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-      transition: transform .5s var(--ease);
+    .card:hover img {
+      transform: scale(1.06);
+      filter: grayscale(.1) brightness(.72) contrast(1.12);
     }
-    .card:hover .card__photo img { transform: scale(1.08); }
-    @media (hover: none) { .card:hover .card__photo img { transform: none; } }
 
-    /* Info panel overlaid at bottom with gradient on desktop */
-    .card__info {
+    .card::after {
+      content: "";
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 16px 18px 20px;
-      background: linear-gradient(to top, rgba(0,0,0,.86) 0%, rgba(0,0,0,.42) 55%, transparent 100%);
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.88), transparent 60%);
+    }
+
+    .monogram {
+      position: absolute;
+      top: -23px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #30392c;
+      border: 1px solid rgba(214,177,118,.85);
+      color: var(--soft-gold);
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 7px;
+      justify-content: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem;
+      z-index: 4;
+    }
+
+    .card-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 30px;
       text-align: center;
-    }
-
-    .card__badge {
-      font-size: .5rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 100px;
-      color: rgba(255,255,255,.7);
-      background: rgba(255,255,255,.12);
-    }
-
-    .card__title {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(1rem, 2vw, 1.4rem);
-      font-weight: 800;
       color: #fff;
-      letter-spacing: .03em;
-      line-height: 1;
+      z-index: 3;
     }
 
-    .card__services {
-      font-size: .6rem;
-      color: rgba(255,255,255,.72);
-      letter-spacing: .05em;
-      margin-bottom: 2px;
+    .card-content h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 3.3rem;
+      font-weight: 600;
+      letter-spacing: .04em;
     }
 
-    /* ══════════════════════════════════════
-       CARD — MOBILE ONLY
-       Portrait rectangle · image top
-       white info panel bottom
-    ══════════════════════════════════════ */
-    /* ─────────────────────────────────────────────
-       PHONE — fixed pixel layout so every phone
-       looks exactly like the reference screenshot
-    ───────────────────────────────────────────── */
-    @media (max-width: 640px) {
-
-      /* Card: fixed 340px tall, width fills screen up to 390px */
-      .card {
-        width:  calc((min(100vw, 390px) - 42px) / 2);
-        height: 340px;
-        border-radius: 16px;
-        background: #fff;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 4px 18px rgba(0,0,0,.13);
-      }
-
-      /* Photo fills top ~65% */
-      .card__photo {
-        position: relative;
-        inset: unset;
-        width: 100%;
-        height: 220px;
-        flex: none;
-        overflow: hidden;
-        border-radius: 16px 16px 0 0;
-      }
-      .card__photo img {
-        width: 100%; height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        border-radius: 0;
-      }
-
-      /* White info panel — fixed 120px */
-      .card__info {
-        position: relative;
-        bottom: unset; left: unset; right: unset;
-        height: 120px;
-        background: #fff;
-        flex-shrink: 0;
-        padding: 10px 10px 12px;
-        gap: 4px;
-        border-radius: 0 0 16px 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      /* Title */
-      .card__title {
-        font-size: 1.05rem;
-        color: var(--olive-dk);
-        font-weight: 800;
-        line-height: 1;
-      }
-      .card--women .card__title { color: var(--brown-dk); }
-
-      /* Services */
-      .card__services {
-        color: var(--text-2);
-        font-size: .52rem;
-        letter-spacing: .03em;
-        margin-bottom: 2px;
-      }
+    .card-content p {
+      font-size: .95rem;
+      letter-spacing: .38em;
+      color: var(--soft-gold);
+      margin-top: 4px;
     }
 
-    @media (max-height: 500px) {
-      .card {
-        width: min(34vh, 200px);
-        height: min(34vh, 200px);
-        border-radius: 14px;
-        position: relative;
-        display: block;
-      }
-      .card__photo { position: absolute; inset: 0; width: 100%; height: 100%; }
-      .card__info   { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,.86), transparent); padding: 10px 10px 12px; }
-      .card__badge  { color: rgba(255,255,255,.65); background: rgba(255,255,255,.12); }
-      .card__title  { color: #fff; font-size: .88rem; }
-      .card__services { display: none; }
+    .line {
+      width: 70%;
+      height: 1px;
+      background: rgba(214,177,118,.65);
+      margin: 18px auto 14px;
+      position: relative;
     }
 
-    /* ══════════════════════════════════════
-       VIEW PRICING BUTTON
-    ══════════════════════════════════════ */
-    .btn-pricing {
+    .line::after {
+      content: "✦";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: transparent;
+      color: var(--soft-gold);
+      font-size: .8rem;
+    }
+
+    .view {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-size: .75rem;
+      letter-spacing: .38em;
+      color: var(--soft-gold);
+    }
+
+    .arrow {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(214,177,118,.75);
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      padding: 9px 22px;
-      border-radius: 100px;
-      border: none;
-      font-family: 'Jost', sans-serif;
-      font-size: .74rem;
-      font-weight: 800;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      cursor: pointer;
+      font-size: 1.4rem;
+      letter-spacing: 0;
+    }
+
+    .bottom-line {
       position: relative;
-      overflow: hidden;
-      transition: transform .24s var(--ease), box-shadow .24s var(--ease), background .22s;
+      text-align: center;
+      margin-top: 34px;
+      color: #efe7d4;
+      z-index: 2;
     }
 
-    /* Full-width button on mobile — fixed size */
-    @media (max-width: 640px) {
-      .btn-pricing { width: 100%; padding: 8px 10px; font-size: .62rem; gap: 4px; letter-spacing: .1em; }
-    }
-    @media (max-width: 360px) {
-      .btn-pricing { font-size: .54rem; padding: 6px 6px; }
-    }
-    @media (max-height: 500px) {
-      .btn-pricing { width: auto; padding: 5px 12px; font-size: .58rem; }
+    .bottom-line .bold {
+      font-size: .95rem;
+      letter-spacing: .55em;
     }
 
-    /* Shimmer sweep */
-    .btn-pricing::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -120%; width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
-      transition: left .4s var(--ease);
-      pointer-events: none;
-    }
-    .btn-pricing:hover::before { left: 170%; }
-
-    .btn-pricing svg {
-      width: 12px; height: 12px;
-      stroke: currentColor; fill: none;
-      stroke-width: 2.6; stroke-linecap: round;
-      transition: transform .22s var(--ease);
-      flex-shrink: 0;
-    }
-    .btn-pricing:hover svg { transform: translateX(4px); }
-
-    .card--men .btn-pricing {
-      background: var(--olive-dk); color: #fff;
-      box-shadow: 0 4px 16px var(--olive-glow);
-    }
-    .card--men .btn-pricing:hover {
-      background: #3A4E22;
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 10px 28px var(--olive-glow);
+    .bottom-line .script {
+      margin-top: 8px;
+      font-family: "Great Vibes", cursive;
+      font-size: 2.2rem;
+      color: var(--soft-gold);
     }
 
-    .card--women .btn-pricing {
-      background: var(--brown-dk); color: #fff;
-      box-shadow: 0 4px 16px var(--brown-glow);
-    }
-    .card--women .btn-pricing:hover {
-      background: #5C3A18;
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 10px 28px var(--brown-glow);
-    }
-
-    /* ══════════════════════════════════════
-       FOOTER NOTE
-    ══════════════════════════════════════ */
-    /* Hidden on desktop & tablet — phone only */
-    .page-note { display: none; }
-
-    @media (max-width: 640px) {
-      .page-note {
-        display: block;
-        font-size: .55rem;
-        color: var(--text-2);
-        letter-spacing: .1em;
-        opacity: .65;
-        text-align: center;
-        padding-top: 2px;
-      }
-    }
-    @media (max-height: 500px) { .page-note { display: none; } }
-
-    /* ══════════════════════════════════════
-       PDF OVERLAY
-    ══════════════════════════════════════ */
     .overlay {
-      position: fixed; inset: 0; z-index: 300;
-      background: rgba(16,12,6,.65);
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.75);
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      z-index: 99;
       display: none;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      padding: 20px 14px;
-      overflow-y: auto;
+      padding: 16px;
     }
-    .overlay.open { display: flex; }
 
-    .overlay__panel {
+    .overlay.open {
+      display: flex;
+    }
+
+    .overlay-panel {
+      width: min(100%, 900px);
+      height: 88vh;
       background: #fff;
       border-radius: 18px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.3);
-      width: 100%; max-width: 850px;
       overflow: hidden;
-      display: flex; flex-direction: column;
-      animation: popIn .3s var(--ease) both;
-    }
-    @media (max-width: 640px) {
-      .overlay { padding: 10px 8px; }
-      .overlay__panel { border-radius: 12px; }
+      display: flex;
+      flex-direction: column;
     }
 
-    @keyframes popIn {
-      from { opacity:0; transform: scale(.95) translateY(22px); }
-      to   { opacity:1; transform: scale(1)   translateY(0);    }
+    .overlay-bar {
+      height: 58px;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      font-weight: 600;
+      color: #2f3727;
     }
 
-    .overlay__bar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 20px;
-      border-bottom: 1px solid #ede8de;
-      flex-shrink: 0;
-    }
-    @media (max-width: 640px) { .overlay__bar { padding: 11px 14px; } }
-
-    .overlay__bar-title { font-size: .95rem; font-weight: 700; color: var(--text); }
-    @media (max-width: 640px) { .overlay__bar-title { font-size: .82rem; } }
-
-    .overlay__close {
-      width: 34px; height: 34px;
-      border: none; border-radius: 50%;
-      background: #f0ece3; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s, transform .22s;
-      flex-shrink: 0;
-    }
-    .overlay__close:hover { background: #ddd8ce; transform: rotate(90deg); }
-    .overlay__close svg {
-      width: 14px; height: 14px;
-      stroke: var(--text); fill: none;
-      stroke-width: 2.5; stroke-linecap: round;
+    .close {
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      background: #eee8dc;
+      cursor: pointer;
+      font-size: 22px;
+      color: #2f3727;
     }
 
-    .overlay__frame {
+    iframe {
       width: 100%;
-      height: 82vh;
-      border: none; display: block;
+      height: 100%;
+      border: none;
     }
-    @media (max-width: 640px) { .overlay__frame { height: 78vh; } }
 
-    .overlay__fallback {
-      display: none; flex-direction: column; align-items: center;
-      justify-content: center; gap: 14px;
-      height: 78vh; padding: 32px; text-align: center; color: var(--text-2);
+    @media (max-width: 640px) {
+      .page {
+        padding: 0;
+        align-items: flex-start;
+      }
+
+      .poster {
+        width: 100%;
+        min-height: 100vh;
+        padding: 14px 0 28px;
+      }
+
+      .brand h1 {
+        font-size: 4.6rem;
+      }
+
+      .brand h2 {
+        font-size: 1rem;
+        letter-spacing: .45em;
+      }
+
+      .tagline {
+        margin-top: 36px;
+      }
+
+      .tagline .small {
+        font-size: .68rem;
+        letter-spacing: .28em;
+      }
+
+      .experience-box {
+        width: 92%;
+        margin-top: 34px;
+        padding: 32px 18px 26px;
+        border-radius: 110px 110px 0 0;
+      }
+
+      .choose .small {
+        font-size: .75rem;
+        letter-spacing: .34em;
+      }
+
+      .choose .big {
+        font-size: 4.2rem;
+      }
+
+      .cards {
+        gap: 16px;
+      }
+
+      .card {
+        height: 280px;
+        border-radius: 90px 90px 0 0;
+      }
+
+      .card-content {
+        bottom: 20px;
+      }
+
+      .card-content h3 {
+        font-size: 2.1rem;
+      }
+
+      .card-content p {
+        font-size: .66rem;
+        letter-spacing: .3em;
+      }
+
+      .view {
+        font-size: .58rem;
+        gap: 8px;
+        letter-spacing: .22em;
+      }
+
+      .arrow {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+      }
+
+      .bottom-line .bold {
+        font-size: .7rem;
+        letter-spacing: .4em;
+      }
+
+      .bottom-line .script {
+        font-size: 1.7rem;
+      }
     }
-    .overlay__fallback svg { width: 44px; height: 44px; stroke: var(--brown-md); fill: none; stroke-width: 1.4; }
-    .overlay__fallback p { font-size: .88rem; line-height: 1.7; }
-    .overlay__fallback a {
-      padding: 10px 28px; background: var(--olive-dk); color: #fff;
-      border-radius: 100px; font-size: .82rem; font-weight: 700;
-      text-decoration: none; letter-spacing: .08em; transition: background .2s;
-    }
-    .overlay__fallback a:hover { background: #3A4E22; }
   </style>
 </head>
+
 <body>
+  <section class="page">
+    <div class="poster">
 
-<!-- ── Header ───────────────────────────────────────────────── -->
-<header>
-  <img
-    src="logo.png"
-    alt="Lumaa Salon"
-    class="logo-img"
-    onerror="this.style.display='none'; document.getElementById('lf').style.display='flex';"
-  />
-  <div class="logo-fallback" id="lf">
-    <span class="lf-name">Lumaa salon</span>
-    <span class="lf-sub">Premium Salon</span>
-  </div>
-</header>
-
-<!-- ── Main ─────────────────────────────────────────────────── -->
-<main>
- <div class="content-group">
-
-  <div class="page-heading">
-    <h1>Choose Your Experience</h1>
-    <p>Tap a card to explore our full service menu &amp; pricing</p>
-  </div>
-
-  <div class="cards">
-
-    <!-- Men card -->
-    <article class="card card--men"
-             onclick="openPDF('men')"
-             role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter')openPDF('men')"
-             aria-label="View Men's pricing">
-      <div class="card__photo">
-        <img
-          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&h=800&fit=crop&crop=top&q=85"
-          alt="Man getting a stylish haircut at the barbershop"
-          loading="eager"
-        />
+      <div class="brand">
+        <div class="brand-icon">☘</div>
+        <h1>Lumaa</h1>
+        <h2>SALON</h2>
       </div>
-      <div class="card__info">
-        <div class="card__title">For Men</div>
-        <div class="card__services">Hair · Beard · Skin · Grooming</div>
-        <button class="btn-pricing" onclick="event.stopPropagation();openPDF('men')">
-          View Pricing
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
+
+      <div class="tagline">
+        <div class="main">BEAUTY. CONFIDENCE.</div>
+        <div class="script">Presence.</div>
+        <div class="small">
+          CRAFTED EXPERIENCES<br>
+          SIGNATURE TRANSFORMATIONS.
+        </div>
       </div>
-    </article>
 
-    <!-- Women card -->
-    <article class="card card--women"
-             onclick="openPDF('women')"
-             role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter')openPDF('women')"
-             aria-label="View Women's pricing">
-      <div class="card__photo">
-        <img
-          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&h=800&fit=crop&crop=top&q=85"
-          alt="Woman in salon getting hair styled"
-          loading="eager"
-        />
+      <div class="experience-box">
+        <div class="choose">
+          <div class="small">CHOOSE YOUR</div>
+          <div class="big">Experience</div>
+        </div>
+
+        <div class="cards">
+          <article class="card" onclick="openPDF('men')">
+            <div class="monogram">ls</div>
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=90" alt="Men Rate Card">
+            <div class="card-content">
+              <h3>MEN</h3>
+              <p>RATE CARD</p>
+              <div class="line"></div>
+              <div class="view">VIEW MENU <span class="arrow">→</span></div>
+            </div>
+          </article>
+
+          <article class="card" onclick="openPDF('women')">
+            <div class="monogram">ls</div>
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=90" alt="Women Rate Card">
+            <div class="card-content">
+              <h3>WOMEN</h3>
+              <p>RATE CARD</p>
+              <div class="line"></div>
+              <div class="view">VIEW MENU <span class="arrow">→</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="bottom-line">
+          <div class="bold">BE BOLD. BE YOU.</div>
+          <div class="script">The world will adjust.</div>
+        </div>
       </div>
-      <div class="card__info">
-        <div class="card__title">For Women</div>
-        <div class="card__services">Hair · Nails · Skin · Makeup</div>
-        <button class="btn-pricing" onclick="event.stopPropagation();openPDF('women')">
-          View Pricing
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-    </article>
 
-  </div>
-
-  <p class="page-note">Prices subject to consultation &nbsp;|&nbsp; GST extra &nbsp;|&nbsp; T&amp;C apply</p>
-
- </div><!-- /.content-group -->
-</main>
-
-<!-- ── PDF Overlay ───────────────────────────────────────────── -->
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
-  <div class="overlay__panel">
-    <div class="overlay__bar">
-      <span class="overlay__bar-title" id="overlayTitle">Service Menu</span>
-      <button class="overlay__close" onclick="closePDF()" aria-label="Close">
-        <svg viewBox="0 0 24 24">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6"  y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
     </div>
-    <iframe id="pdfFrame" class="overlay__frame" title="Service Menu" src=""></iframe>
-    <div class="overlay__fallback" id="fallback">
-      <svg viewBox="0 0 24 24">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-        <polyline points="14 2 14 8 20 8"/>
-      </svg>
-      <p>PDF preview is blocked locally.<br>Open it directly instead.</p>
-      <a id="fallbackLink" href="#">Open PDF</a>
+  </section>
+
+  <div class="overlay" id="overlay">
+    <div class="overlay-panel">
+      <div class="overlay-bar">
+        <span id="overlayTitle">Service Menu</span>
+        <button class="close" onclick="closePDF()">×</button>
+      </div>
+      <iframe id="pdfFrame" src=""></iframe>
     </div>
   </div>
-</div>
 
-<script>
-  const overlay    = document.getElementById('overlay');
-  const frame      = document.getElementById('pdfFrame');
-  const titleEl    = document.getElementById('overlayTitle');
-  const fallback   = document.getElementById('fallback');
-  const fallbackLk = document.getElementById('fallbackLink');
+  <script>
+    const overlay = document.getElementById("overlay");
+    const pdfFrame = document.getElementById("pdfFrame");
+    const overlayTitle = document.getElementById("overlayTitle");
 
-  const pdfs = {
-    men:   { file: 'men.pdf',   label: "Men's Services"   },
-    women: { file: 'women.pdf', label: "Women's Services" }
-  };
+    const pdfs = {
+      men: {
+        file: "men.pdf",
+        title: "Men Rate Card"
+      },
+      women: {
+        file: "women.pdf",
+        title: "Women Rate Card"
+      }
+    };
 
-  function openPDF(type) {
-    const { file, label } = pdfs[type];
-    titleEl.textContent = label;
-    frame.style.display = 'block';
-    fallback.style.display = 'none';
-    fallbackLk.href = file;
-    frame.onload  = () => { try { if (frame.contentDocument?.body?.innerHTML === '') showFallback(); } catch(_){} };
-    frame.onerror = showFallback;
-    frame.src = file;
-    overlay.classList.add('open');
-  }
+    function openPDF(type) {
+      overlayTitle.textContent = pdfs[type].title;
+      pdfFrame.src = pdfs[type].file;
+      overlay.classList.add("open");
+    }
 
-  function showFallback() {
-    frame.style.display = 'none';
-    fallback.style.display = 'flex';
-  }
+    function closePDF() {
+      overlay.classList.remove("open");
+      setTimeout(() => {
+        pdfFrame.src = "";
+      }, 250);
+    }
 
-  function closePDF() {
-    overlay.classList.remove('open');
-    setTimeout(() => { frame.src = ''; }, 320);
-  }
+    overlay.addEventListener("click", function(e) {
+      if (e.target === overlay) closePDF();
+    });
 
-  overlay.addEventListener('click', e => { if (e.target === overlay) closePDF(); });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closePDF();
-  });
-</script>
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closePDF();
+    });
+  </script>
 </body>
 </html>
