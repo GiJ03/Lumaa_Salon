@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lumaa Salon — Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --olive-dk:   #4E6330;
+      --olive-md:   #7D9656;
+      --olive-glow: rgba(78,99,48,.4);
+      --brown-dk:   #7A5230;
+      --brown-md:   #B07848;
+      --brown-glow: rgba(122,82,48,.4);
+      --page:       #F2EFE6;
+      --text:       #24200E;
+      --text-2:     #6A5840;
+      --ease:       cubic-bezier(.4,0,.2,1);
+    }
+
+    /* Body never scrolls — main handles scrolling internally */
+    html, body { height: 100%; overflow: hidden; }
+
+    body {
+      font-family: 'Jost', 'Segoe UI', system-ui, sans-serif;
+      background: var(--page);
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 55% 45% at 20% 65%, rgba(125,150,86,.13) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 45% at 80% 35%, rgba(176,120,72,.11) 0%, transparent 70%);
+    }
+
+    /* ══════════════════════════════════════
+       HEADER
+    ══════════════════════════════════════ */
+    header {
+      flex-shrink: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      background: rgba(242,239,230,.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(125,150,86,.18);
+    }
+
+    .logo-img {
+      height: 72px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .logo-fallback .lf-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: .04em;
+      color: var(--olive-dk);
+      line-height: 1;
+    }
+    .logo-fallback .lf-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: .58rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--brown-md);
+      font-weight: 600;
+    }
+
+    /* Tablet header */
+    @media (max-width: 900px) {
+      header { padding: 12px 20px; }
+      .logo-img { height: 56px; }
+      .logo-fallback .lf-name { font-size: 1.85rem; }
+    }
+    /* Mobile header */
+    @media (max-width: 640px) {
+      header { padding: 10px 18px; }
+      .logo-img { height: 44px; }
+      .logo-fallback .lf-name { font-size: 1.45rem; }
+      .logo-fallback .lf-sub  { font-size: .52rem; letter-spacing: .22em; }
+    }
+    /* Landscape phone header */
+    @media (max-height: 500px) {
+      header { padding: 7px 16px; }
+      .logo-img { height: 32px; }
+      .logo-fallback .lf-name { font-size: 1.1rem; }
+    }
+
+    /* ══════════════════════════════════════
+       MAIN
+       overflow-y:auto = main scrolls when
+       needed; justify-content:center always
+       centers without clipping the top.
+    ══════════════════════════════════════ */
+    main {
+      flex: 1;
+      min-height: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      /* hide scrollbar across all browsers */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    main::-webkit-scrollbar { display: none; }
+
+    @media (max-width: 900px) { main { padding: 0 16px; } }
+    @media (max-width: 640px) {
+      main {
+        justify-content: flex-start;   /* no giant gaps on tall phones */
+        padding: 36px 16px 20px;       /* fixed top spacing matches iPhone SE */
+      }
+    }
+    @media (max-height: 500px) { main { padding: 0 12px; } }
+
+    /* ══════════════════════════════════════
+       CONTENT GROUP
+    ══════════════════════════════════════ */
+    .content-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0 18px;
+      width: 100%;
+    }
+
+    @media (max-width: 900px) { .content-group { gap: 16px; padding: 20px 0 16px; } }
+    @media (max-width: 640px) { .content-group { gap: 10px; padding: 14px 0 8px; width: 100%; align-items: center; } }
+    @media (max-height: 500px) {
+      .content-group { gap: 10px; padding: 8px 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* ══════════════════════════════════════
+       PAGE HEADING
+    ══════════════════════════════════════ */
+    .page-heading { text-align: center; }
+
+    .page-heading h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: .02em;
+      line-height: 1.05;
+    }
+
+    .page-heading p {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(.58rem, .85vw, .72rem);
+      font-weight: 600;
+      color: var(--text-2);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .page-heading h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
+      .page-heading p  { font-size: .65rem; margin-top: 8px; }
+    }
+    @media (max-width: 640px) {
+      .page-heading { text-align: center; width: 100%; }
+      .page-heading h1 { font-size: 1.85rem; line-height: 1.08; }
+      .page-heading p  { font-size: .6rem; letter-spacing: .13em; margin-top: 5px; }
+    }
+    @media (max-height: 500px) {
+      .page-heading h1 { font-size: 1.2rem; }
+      .page-heading p  { font-size: .52rem; margin-top: 3px; }
+    }
+
+    /* ══════════════════════════════════════
+       CARDS ROW
+    ══════════════════════════════════════ */
+    .cards {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 900px) { .cards { gap: 14px; } }
+    @media (max-width: 640px) { .cards { gap: 10px; width: 100%; max-width: 390px; align-items: stretch; justify-content: center; } }
+    @media (max-height: 500px) { .cards { gap: 10px; } }
+
+    /* ══════════════════════════════════════
+       CARD — DESKTOP / TABLET
+       Square, full-bleed photo, overlay text
+    ══════════════════════════════════════ */
+    .card {
+      width: clamp(240px, 28vw, 340px);
+      height: clamp(240px, 28vw, 340px);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+      position: relative;
+      box-shadow: 0 6px 28px rgba(0,0,0,.14);
+      transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 1400px) {
+      .card { width: clamp(300px, 22vw, 420px); height: clamp(300px, 22vw, 420px); }
+    }
+    @media (max-width: 900px) {
+      .card { width: clamp(200px, 34vw, 300px); height: clamp(200px, 34vw, 300px); border-radius: 16px; }
+    }
+
+    .card:hover { transform: translateY(-8px); box-shadow: 0 22px 52px rgba(0,0,0,.2); }
+    @media (hover: none) { .card:hover { transform: none; box-shadow: 0 6px 28px rgba(0,0,0,.14); } }
+
+    /* Photo fills full card on desktop */
+    .card__photo { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .card__photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      transition: transform .5s var(--ease);
+    }
+    .card:hover .card__photo img { transform: scale(1.08); }
+    @media (hover: none) { .card:hover .card__photo img { transform: none; } }
+
+    /* Info panel overlaid at bottom with gradient on desktop */
+    .card__info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 16px 18px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,.86) 0%, rgba(0,0,0,.42) 55%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      text-align: center;
+    }
+
+    .card__badge {
+      font-size: .5rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 100px;
+      color: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.12);
+    }
+
+    .card__title {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: .03em;
+      line-height: 1;
+    }
+
+    .card__services {
+      font-size: .6rem;
+      color: rgba(255,255,255,.72);
+      letter-spacing: .05em;
+      margin-bottom: 2px;
+    }
+
+    /* ══════════════════════════════════════
+       CARD — MOBILE ONLY
+       Portrait rectangle · image top
+       white info panel bottom
+    ══════════════════════════════════════ */
+    /* ─────────────────────────────────────────────
+       PHONE — fixed pixel layout so every phone
+       looks exactly like the reference screenshot
+    ───────────────────────────────────────────── */
+    @media (max-width: 640px) {
+
+      /* Card: fixed 340px tall, width fills screen up to 390px */
+      .card {
+        width:  calc((min(100vw, 390px) - 42px) / 2);
+        height: 340px;
+        border-radius: 16px;
+        background: #fff;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 18px rgba(0,0,0,.13);
+      }
+
+      /* Photo fills top ~65% */
+      .card__photo {
+        position: relative;
+        inset: unset;
+        width: 100%;
+        height: 220px;
+        flex: none;
+        overflow: hidden;
+        border-radius: 16px 16px 0 0;
+      }
+      .card__photo img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 0;
+      }
+
+      /* White info panel — fixed 120px */
+      .card__info {
+        position: relative;
+        bottom: unset; left: unset; right: unset;
+        height: 120px;
+        background: #fff;
+        flex-shrink: 0;
+        padding: 10px 10px 12px;
+        gap: 4px;
+        border-radius: 0 0 16px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* Title */
+      .card__title {
+        font-size: 1.05rem;
+        color: var(--olive-dk);
+        font-weight: 800;
+        line-height: 1;
+      }
+      .card--women .card__title { color: var(--brown-dk); }
+
+      /* Services */
+      .card__services {
+        color: var(--text-2);
+        font-size: .52rem;
+        letter-spacing: .03em;
+        margin-bottom: 2px;
+      }
+    }
+
+    @media (max-height: 500px) {
+      .card {
+        width: min(34vh, 200px);
+        height: min(34vh, 200px);
+        border-radius: 14px;
+        position: relative;
+        display: block;
+      }
+      .card__photo { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .card__info   { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,.86), transparent); padding: 10px 10px 12px; }
+      .card__badge  { color: rgba(255,255,255,.65); background: rgba(255,255,255,.12); }
+      .card__title  { color: #fff; font-size: .88rem; }
+      .card__services { display: none; }
+    }
+
+    /* ══════════════════════════════════════
+       VIEW PRICING BUTTON
+    ══════════════════════════════════════ */
+    .btn-pricing {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 22px;
+      border-radius: 100px;
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform .24s var(--ease), box-shadow .24s var(--ease), background .22s;
+    }
+
+    /* Full-width button on mobile — fixed size */
+    @media (max-width: 640px) {
+      .btn-pricing { width: 100%; padding: 8px 10px; font-size: .62rem; gap: 4px; letter-spacing: .1em; }
+    }
+    @media (max-width: 360px) {
+      .btn-pricing { font-size: .54rem; padding: 6px 6px; }
+    }
+    @media (max-height: 500px) {
+      .btn-pricing { width: auto; padding: 5px 12px; font-size: .58rem; }
+    }
+
+    /* Shimmer sweep */
+    .btn-pricing::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -120%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+      transition: left .4s var(--ease);
+      pointer-events: none;
+    }
+    .btn-pricing:hover::before { left: 170%; }
+
+    .btn-pricing svg {
+      width: 12px; height: 12px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2.6; stroke-linecap: round;
+      transition: transform .22s var(--ease);
+      flex-shrink: 0;
+    }
+    .btn-pricing:hover svg { transform: translateX(4px); }
+
+    .card--men .btn-pricing {
+      background: var(--olive-dk); color: #fff;
+      box-shadow: 0 4px 16px var(--olive-glow);
+    }
+    .card--men .btn-pricing:hover {
+      background: #3A4E22;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 28px var(--olive-glow);
+    }
+
+    .card--women .btn-pricing {
+      background: var(--brown-dk); color: #fff;
+      box-shadow: 0 4px 16px var(--brown-glow);
+    }
+    .card--women .btn-pricing:hover {
+      background: #5C3A18;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 28px var(--brown-glow);
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER NOTE
+    ══════════════════════════════════════ */
+    /* Hidden on desktop & tablet — phone only */
+    .page-note { display: none; }
+
+    @media (max-width: 640px) {
+      .page-note {
+        display: block;
+        font-size: .55rem;
+        color: var(--text-2);
+        letter-spacing: .1em;
+        opacity: .65;
+        text-align: center;
+        padding-top: 2px;
+      }
+    }
+    @media (max-height: 500px) { .page-note { display: none; } }
+
+    /* ══════════════════════════════════════
+       PDF OVERLAY
+    ══════════════════════════════════════ */
+    .overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(16,12,6,.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px 14px;
+      overflow-y: auto;
+    }
+    .overlay.open { display: flex; }
+
+    .overlay__panel {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.3);
+      width: 100%; max-width: 850px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      animation: popIn .3s var(--ease) both;
+    }
+    @media (max-width: 640px) {
+      .overlay { padding: 10px 8px; }
+      .overlay__panel { border-radius: 12px; }
+    }
+
+    @keyframes popIn {
+      from { opacity:0; transform: scale(.95) translateY(22px); }
+      to   { opacity:1; transform: scale(1)   translateY(0);    }
+    }
+
+    .overlay__bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid #ede8de;
+      flex-shrink: 0;
+    }
+    @media (max-width: 640px) { .overlay__bar { padding: 11px 14px; } }
+
+    .overlay__bar-title { font-size: .95rem; font-weight: 700; color: var(--text); }
+    @media (max-width: 640px) { .overlay__bar-title { font-size: .82rem; } }
+
+    .overlay__close {
+      width: 34px; height: 34px;
+      border: none; border-radius: 50%;
+      background: #f0ece3; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, transform .22s;
+      flex-shrink: 0;
+    }
+    .overlay__close:hover { background: #ddd8ce; transform: rotate(90deg); }
+    .overlay__close svg {
+      width: 14px; height: 14px;
+      stroke: var(--text); fill: none;
+      stroke-width: 2.5; stroke-linecap: round;
+    }
+
+    .overlay__frame {
+      width: 100%;
+      height: 82vh;
+      border: none; display: block;
+    }
+    @media (max-width: 640px) { .overlay__frame { height: 78vh; } }
+
+    .overlay__fallback {
+      display: none; flex-direction: column; align-items: center;
+      justify-content: center; gap: 14px;
+      height: 78vh; padding: 32px; text-align: center; color: var(--text-2);
+    }
+    .overlay__fallback svg { width: 44px; height: 44px; stroke: var(--brown-md); fill: none; stroke-width: 1.4; }
+    .overlay__fallback p { font-size: .88rem; line-height: 1.7; }
+    .overlay__fallback a {
+      padding: 10px 28px; background: var(--olive-dk); color: #fff;
+      border-radius: 100px; font-size: .82rem; font-weight: 700;
+      text-decoration: none; letter-spacing: .08em; transition: background .2s;
+    }
+    .overlay__fallback a:hover { background: #3A4E22; }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ───────────────────────────────────────────────── -->
+<header>
+  <img
+    src="logo.png"
+    alt="Lumaa Salon"
+    class="logo-img"
+    onerror="this.style.display='none'; document.getElementById('lf').style.display='flex';"
+  />
+  <div class="logo-fallback" id="lf">
+    <span class="lf-name">Lumaa salon</span>
+    <span class="lf-sub">Premium Salon</span>
+  </div>
+</header>
+
+<!-- ── Main ─────────────────────────────────────────────────── -->
+<main>
+ <div class="content-group">
+
+  <div class="page-heading">
+    <h1>Choose Your Experience</h1>
+    <p>Tap a card to explore our full service menu &amp; pricing</p>
+  </div>
+
+  <div class="cards">
+
+    <!-- Men card -->
+    <article class="card card--men"
+             onclick="openPDF('men')"
+             role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter')openPDF('men')"
+             aria-label="View Men's pricing">
+      <div class="card__photo">
+        <img
+          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&h=800&fit=crop&crop=top&q=85"
+          alt="Man getting a stylish haircut at the barbershop"
+          loading="eager"
+        />
+      </div>
+      <div class="card__info">
+        <div class="card__title">For Men</div>
+        <div class="card__services">Hair · Beard · Skin · Grooming</div>
+        <button class="btn-pricing" onclick="event.stopPropagation();openPDF('men')">
+          View Pricing
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </article>
+
+    <!-- Women card -->
+    <article class="card card--women"
+             onclick="openPDF('women')"
+             role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter')openPDF('women')"
+             aria-label="View Women's pricing">
+      <div class="card__photo">
+        <img
+          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&h=800&fit=crop&crop=top&q=85"
+          alt="Woman in salon getting hair styled"
+          loading="eager"
+        />
+      </div>
+      <div class="card__info">
+        <div class="card__title">For Women</div>
+        <div class="card__services">Hair · Nails · Skin · Makeup</div>
+        <button class="btn-pricing" onclick="event.stopPropagation();openPDF('women')">
+          View Pricing
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="page-note">Prices subject to consultation &nbsp;|&nbsp; GST extra &nbsp;|&nbsp; T&amp;C apply</p>
+
+ </div><!-- /.content-group -->
+</main>
+
+<!-- ── PDF Overlay ───────────────────────────────────────────── -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+  <div class="overlay__panel">
+    <div class="overlay__bar">
+      <span class="overlay__bar-title" id="overlayTitle">Service Menu</span>
+      <button class="overlay__close" onclick="closePDF()" aria-label="Close">
+        <svg viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6"  y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <iframe id="pdfFrame" class="overlay__frame" title="Service Menu" src=""></iframe>
+    <div class="overlay__fallback" id="fallback">
+      <svg viewBox="0 0 24 24">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+      </svg>
+      <p>PDF preview is blocked locally.<br>Open it directly instead.</p>
+      <a id="fallbackLink" href="#">Open PDF</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const overlay    = document.getElementById('overlay');
+  const frame      = document.getElementById('pdfFrame');
+  const titleEl    = document.getElementById('overlayTitle');
+  const fallback   = document.getElementById('fallback');
+  const fallbackLk = document.getElementById('fallbackLink');
+
+  const pdfs = {
+    men:   { file: 'men.pdf',   label: "Men's Services"   },
+    women: { file: 'women.pdf', label: "Women's Services" }
+  };
+
+  function openPDF(type) {
+    const { file, label } = pdfs[type];
+    titleEl.textContent = label;
+    frame.style.display = 'block';
+    fallback.style.display = 'none';
+    fallbackLk.href = file;
+    frame.onload  = () => { try { if (frame.contentDocument?.body?.innerHTML === '') showFallback(); } catch(_){} };
+    frame.onerror = showFallback;
+    frame.src = file;
+    overlay.classList.add('open');
+  }
+
+  function showFallback() {
+    frame.style.display = 'none';
+    fallback.style.display = 'flex';
+  }
+
+  function closePDF() {
+    overlay.classList.remove('open');
+    setTimeout(() => { frame.src = ''; }, 320);
+  }
+
+  overlay.addEventListener('click', e => { if (e.target === overlay) closePDF(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closePDF();
+  });
+</script>
+</body>
+</html>
