@@ -5,19 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumaa Salon</title>
 
+  <link rel="icon" type="image/jpeg" href="logo-icon.jpg">
+  <link rel="apple-touch-icon" href="logo-icon.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
-      --cream: #eee4d2;
-      --dark: #2f3727;
+      --cream: #efe4d2;
+      --dark: #30392c;
       --gold: #b88a55;
       --soft-gold: #d6b176;
-      --text: #eee7d6;
+      --olive: #9ea37a;
     }
 
     html, body {
@@ -31,7 +38,7 @@
     .page {
       min-height: 100vh;
       position: relative;
-      background: linear-gradient(90deg, #efe4d2 0 50%, #2f3727 50% 100%);
+      background: linear-gradient(90deg, #efe4d2 0 50%, #30392c 50% 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -46,9 +53,10 @@
       background: url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=1200&q=80");
       background-size: cover;
       background-position: center;
-      opacity: .18;
+      opacity: .17;
       filter: blur(1px);
       mix-blend-mode: multiply;
+      pointer-events: none;
     }
 
     .poster {
@@ -63,42 +71,20 @@
 
     .brand {
       text-align: center;
-      padding-top: 30px;
-      color: var(--dark);
+      padding-top: 20px;
+      width: 100%;
     }
 
-    .brand-icon {
-      width: 56px;
-      height: 86px;
-      border: 1px solid rgba(184,138,85,.55);
-      border-radius: 50px;
-      margin: 0 auto 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-size: 28px;
-    }
-
-    .brand h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(4rem, 12vw, 7.4rem);
-      font-weight: 500;
-      letter-spacing: .04em;
-      line-height: .8;
-      color: #303a2b;
-    }
-
-    .brand h2 {
-      margin-top: 12px;
-      font-size: clamp(1.1rem, 3vw, 1.8rem);
-      letter-spacing: .55em;
-      font-weight: 400;
-      color: #9b7048;
+    .brand-logo {
+      width: min(430px, 84vw);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      mix-blend-mode: multiply;
     }
 
     .tagline {
-      margin-top: 56px;
+      margin-top: 48px;
       text-align: center;
       color: #38412f;
     }
@@ -134,14 +120,13 @@
       padding: 38px 34px 34px;
       box-shadow: 0 30px 80px rgba(0,0,0,.35);
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .choose {
-      position: relative;
       text-align: center;
-      color: var(--text);
-      margin-bottom: 26px;
+      color: #eee7d6;
+      margin-bottom: 28px;
     }
 
     .choose .small {
@@ -159,10 +144,10 @@
     }
 
     .cards {
-      position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 34px;
+      position: relative;
       z-index: 2;
     }
 
@@ -171,48 +156,61 @@
       height: 390px;
       border: 1px solid rgba(214,177,118,.75);
       border-radius: 130px 130px 0 0;
-      overflow: hidden;
+      overflow: visible;
       cursor: pointer;
       background: #111;
     }
 
-    .card img {
+    .card-photo {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 130px 130px 0 0;
+      position: relative;
+    }
+
+    .card-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       filter: grayscale(.25) brightness(.58) contrast(1.08);
       transition: transform .5s ease, filter .5s ease;
+      display: block;
     }
 
-    .card:hover img {
+    .card:hover .card-photo img {
       transform: scale(1.06);
       filter: grayscale(.1) brightness(.72) contrast(1.12);
     }
 
-    .card::after {
+    .card-photo::after {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,.88), transparent 60%);
+      pointer-events: none;
     }
 
     .monogram {
       position: absolute;
-      top: -23px;
+      top: -28px;
       left: 50%;
       transform: translateX(-50%);
-      width: 54px;
-      height: 54px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      background: #30392c;
-      border: 1px solid rgba(214,177,118,.85);
-      color: var(--soft-gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.7rem;
-      z-index: 4;
+      overflow: hidden;
+      z-index: 5;
+      border: 2px solid rgba(214,177,118,.85);
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(0,0,0,.3);
+    }
+
+    .monogram img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .card-content {
@@ -222,7 +220,7 @@
       bottom: 30px;
       text-align: center;
       color: #fff;
-      z-index: 3;
+      z-index: 4;
     }
 
     .card-content h3 {
@@ -251,7 +249,7 @@
       align-items: center;
       gap: 16px;
       font-size: .75rem;
-      letter-spacing: .38em;
+      letter-spacing: .34em;
       color: var(--soft-gold);
     }
 
@@ -297,7 +295,9 @@
       padding: 16px;
     }
 
-    .overlay.open { display: flex; }
+    .overlay.open {
+      display: flex;
+    }
 
     .overlay-panel {
       width: min(100%, 900px);
@@ -318,6 +318,7 @@
       border-bottom: 1px solid #eee;
       font-weight: 600;
       color: #2f3727;
+      flex-shrink: 0;
     }
 
     .close {
@@ -346,26 +347,35 @@
       .poster {
         width: 100%;
         min-height: 100vh;
-        padding: 14px 0 28px;
+        padding: 18px 0 28px;
       }
 
-      .brand h1 { font-size: 4.6rem; }
-
-      .brand h2 {
-        font-size: 1rem;
-        letter-spacing: .45em;
+      .brand {
+        padding-top: 8px;
       }
 
-      .tagline { margin-top: 36px; }
+      .brand-logo {
+        width: 270px;
+        max-width: 82vw;
+      }
+
+      .tagline {
+        margin-top: 34px;
+      }
 
       .tagline .main {
-        font-size: .82rem;
+        font-size: .78rem;
         letter-spacing: .3em;
       }
 
+      .tagline .script {
+        font-size: 2.6rem;
+      }
+
       .tagline .small {
-        font-size: .68rem;
-        letter-spacing: .28em;
+        margin-top: 28px;
+        font-size: .64rem;
+        letter-spacing: .25em;
       }
 
       .experience-box {
@@ -376,32 +386,54 @@
       }
 
       .choose .small {
-        font-size: .75rem;
-        letter-spacing: .34em;
+        font-size: .72rem;
+        letter-spacing: .32em;
       }
 
-      .choose .big { font-size: 4.2rem; }
+      .choose .big {
+        font-size: 4rem;
+      }
 
-      .cards { gap: 16px; }
+      .cards {
+        gap: 16px;
+      }
 
       .card {
         height: 280px;
         border-radius: 90px 90px 0 0;
       }
 
-      .card-content { bottom: 20px; }
+      .card-photo {
+        border-radius: 90px 90px 0 0;
+      }
 
-      .card-content h3 { font-size: 2.1rem; }
+      .monogram {
+        width: 48px;
+        height: 48px;
+        top: -23px;
+      }
+
+      .card-content {
+        bottom: 18px;
+      }
+
+      .card-content h3 {
+        font-size: 2.05rem;
+      }
 
       .card-content p {
-        font-size: .66rem;
-        letter-spacing: .3em;
+        font-size: .62rem;
+        letter-spacing: .28em;
+      }
+
+      .line {
+        margin: 12px auto 10px;
       }
 
       .view {
-        font-size: .58rem;
-        gap: 8px;
-        letter-spacing: .22em;
+        font-size: .54rem;
+        gap: 7px;
+        letter-spacing: .18em;
       }
 
       .arrow {
@@ -411,11 +443,13 @@
       }
 
       .bottom-line .bold {
-        font-size: .7rem;
-        letter-spacing: .4em;
+        font-size: .66rem;
+        letter-spacing: .35em;
       }
 
-      .bottom-line .script { font-size: 1.7rem; }
+      .bottom-line .script {
+        font-size: 1.7rem;
+      }
     }
   </style>
 </head>
@@ -425,9 +459,7 @@
     <div class="poster">
 
       <div class="brand">
-        <div class="brand-icon">☘</div>
-        <h1>Lumaa</h1>
-        <h2>SALON</h2>
+        <img src="logo-main.jpg" alt="Lumaa Salon" class="brand-logo">
       </div>
 
       <div class="tagline">
@@ -446,9 +478,14 @@
         </div>
 
         <div class="cards">
-          <article class="card" onclick="openPDF('men')">
-            <div class="monogram">ls</div>
-            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=90" alt="Men Rate Card">
+
+          <article class="card" onclick="openPDF('men')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openPDF('men')">
+            <div class="monogram">
+              <img src="logo-icon.jpg" alt="Lumaa">
+            </div>
+            <div class="card-photo">
+              <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=90" alt="Men Rate Card">
+            </div>
             <div class="card-content">
               <h3>MEN</h3>
               <p>RATE CARD</p>
@@ -457,9 +494,13 @@
             </div>
           </article>
 
-          <article class="card" onclick="openPDF('women')">
-            <div class="monogram">ls</div>
-            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=90" alt="Women Rate Card">
+          <article class="card" onclick="openPDF('women')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openPDF('women')">
+            <div class="monogram">
+              <img src="logo-icon.jpg" alt="Lumaa">
+            </div>
+            <div class="card-photo">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=90" alt="Women Rate Card">
+            </div>
             <div class="card-content">
               <h3>WOMEN</h3>
               <p>RATE CARD</p>
@@ -467,6 +508,7 @@
               <div class="view">VIEW MENU <span class="arrow">→</span></div>
             </div>
           </article>
+
         </div>
 
         <div class="bottom-line">
@@ -513,7 +555,7 @@
       const pdf = pdfs[type];
 
       if (isIOS()) {
-        window.location.href = pdf.file;
+        window.open(pdf.file, "_blank");
         return;
       }
 
@@ -524,17 +566,22 @@
 
     function closePDF() {
       overlay.classList.remove("open");
+
       setTimeout(() => {
         pdfFrame.src = "";
       }, 250);
     }
 
     overlay.addEventListener("click", function(e) {
-      if (e.target === overlay) closePDF();
+      if (e.target === overlay) {
+        closePDF();
+      }
     });
 
     document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") closePDF();
+      if (e.key === "Escape") {
+        closePDF();
+      }
     });
   </script>
 </body>
