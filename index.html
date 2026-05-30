@@ -19,12 +19,13 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
       font-family: "Jost", sans-serif;
       background: #efe4d2;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     body {
@@ -32,13 +33,20 @@
     }
 
     .page {
-      min-height: 100vh;
       width: 100%;
+      height: 100svh;
       position: relative;
-      background: linear-gradient(90deg, #efe4d2 0%, #efe4d2 50%, #30392c 50%, #30392c 100%);
+      background: linear-gradient(
+        90deg,
+        #efe4d2 0%,
+        #efe4d2 50%,
+        #30392c 50%,
+        #30392c 100%
+      );
       display: flex;
       justify-content: center;
-      padding: 24px 16px 34px;
+      align-items: center;
+      padding: clamp(8px, 2svh, 24px) 16px;
       overflow: hidden;
     }
 
@@ -58,7 +66,12 @@
       position: relative;
       z-index: 2;
       width: min(100%, 820px);
+      height: 100%;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .brand {
@@ -69,8 +82,8 @@
     }
 
     .brand-logo {
-      width: min(420px, 82vw);
-      max-height: 220px;
+      width: min(380px, 78vw);
+      max-height: clamp(80px, 18svh, 180px);
       height: auto;
       display: block;
       margin: 0 auto;
@@ -81,57 +94,60 @@
     }
 
     .tagline {
-      margin-top: 44px;
+      margin-top: clamp(10px, 2.7svh, 34px);
       color: #38412f;
     }
 
     .tagline-main {
-      font-size: 1rem;
-      letter-spacing: 0.42em;
+      font-size: clamp(0.62rem, 1.25svh, 1rem);
+      letter-spacing: clamp(0.18em, 0.75vw, 0.42em);
       font-weight: 500;
     }
 
     .tagline-script {
       font-family: "Great Vibes", cursive;
-      font-size: 3.1rem;
+      font-size: clamp(1.8rem, 4.5svh, 3.1rem);
       color: #a77348;
       line-height: 1;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
     .tagline-small {
-      margin-top: 28px;
-      font-size: 0.85rem;
-      letter-spacing: 0.35em;
-      line-height: 2;
+      margin-top: clamp(8px, 2svh, 24px);
+      font-size: clamp(0.52rem, 1.1svh, 0.85rem);
+      letter-spacing: clamp(0.14em, 0.65vw, 0.35em);
+      line-height: 1.6;
       color: #776047;
     }
 
     .experience-box {
       width: min(94%, 720px);
-      margin: 42px auto 0;
+      margin: clamp(14px, 3svh, 36px) auto 0;
       background: rgba(49, 58, 42, 0.96);
       border: 1px solid rgba(214, 177, 118, 0.75);
-      border-radius: 180px 180px 0 0;
-      padding: 38px 34px 34px;
+      border-radius: clamp(80px, 15svh, 180px) clamp(80px, 15svh, 180px) 0 0;
+      padding:
+        clamp(22px, 3.8svh, 38px)
+        clamp(14px, 4vw, 34px)
+        clamp(16px, 2.8svh, 34px);
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
       overflow: visible;
     }
 
     .choose {
-      margin-bottom: 30px;
+      margin-bottom: clamp(14px, 2.6svh, 30px);
       color: #eee7d6;
     }
 
     .choose-small {
-      font-size: 1rem;
-      letter-spacing: 0.45em;
+      font-size: clamp(0.62rem, 1.25svh, 1rem);
+      letter-spacing: clamp(0.2em, 0.7vw, 0.45em);
       font-weight: 500;
     }
 
     .choose-big {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(4rem, 10vw, 6.6rem);
+      font-size: clamp(2.6rem, 7.4svh, 6.6rem);
       line-height: 0.85;
       color: #d6b176;
       font-weight: 500;
@@ -140,15 +156,15 @@
     .cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 34px;
+      gap: clamp(12px, 3vw, 34px);
     }
 
     .card {
       position: relative;
-      height: 390px;
+      height: clamp(185px, 34svh, 390px);
       cursor: pointer;
       border: 1px solid rgba(214, 177, 118, 0.75);
-      border-radius: 130px 130px 0 0;
+      border-radius: clamp(70px, 13svh, 130px) clamp(70px, 13svh, 130px) 0 0;
       background: #111;
       overflow: visible;
     }
@@ -156,7 +172,7 @@
     .card-photo {
       width: 100%;
       height: 100%;
-      border-radius: 130px 130px 0 0;
+      border-radius: clamp(70px, 13svh, 130px) clamp(70px, 13svh, 130px) 0 0;
       overflow: hidden;
       position: relative;
     }
@@ -185,11 +201,11 @@
 
     .monogram {
       position: absolute;
-      top: -28px;
+      top: clamp(-26px, -3svh, -18px);
       left: 50%;
       transform: translateX(-50%);
-      width: 60px;
-      height: 60px;
+      width: clamp(42px, 7svh, 60px);
+      height: clamp(42px, 7svh, 60px);
       border-radius: 50%;
       overflow: hidden;
       z-index: 5;
@@ -211,23 +227,25 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 30px;
+      bottom: clamp(14px, 2.8svh, 30px);
       z-index: 4;
       color: #fff;
       text-align: center;
+      padding: 0 8px;
     }
 
     .card-content h3 {
       font-family: "Cormorant Garamond", serif;
-      font-size: 3.3rem;
+      font-size: clamp(1.75rem, 5svh, 3.3rem);
       font-weight: 600;
       letter-spacing: 0.04em;
+      line-height: 1;
     }
 
     .card-content p {
       margin-top: 4px;
-      font-size: 0.9rem;
-      letter-spacing: 0.38em;
+      font-size: clamp(0.52rem, 1.1svh, 0.9rem);
+      letter-spacing: clamp(0.16em, 0.6vw, 0.38em);
       color: #d6b176;
     }
 
@@ -235,46 +253,50 @@
       width: 70%;
       height: 1px;
       background: rgba(214,177,118,0.65);
-      margin: 18px auto 14px;
+      margin: clamp(8px, 1.6svh, 18px) auto clamp(7px, 1.4svh, 14px);
     }
 
     .view {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
-      font-size: 0.72rem;
-      letter-spacing: 0.32em;
+      justify-content: center;
+      gap: clamp(6px, 1.6vw, 14px);
+      font-size: clamp(0.48rem, 1svh, 0.72rem);
+      letter-spacing: clamp(0.12em, 0.5vw, 0.32em);
       color: #d6b176;
+      white-space: nowrap;
     }
 
     .arrow {
-      width: 36px;
-      height: 36px;
+      width: clamp(24px, 4.6svh, 36px);
+      height: clamp(24px, 4.6svh, 36px);
       border: 1px solid rgba(214,177,118,0.75);
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: clamp(0.9rem, 2.4svh, 1.3rem);
       letter-spacing: 0;
+      flex-shrink: 0;
     }
 
     .bottom-line {
-      margin-top: 34px;
+      margin-top: clamp(14px, 2.5svh, 34px);
       color: #efe7d4;
       text-align: center;
     }
 
     .bottom-bold {
-      font-size: 0.9rem;
-      letter-spacing: 0.55em;
+      font-size: clamp(0.54rem, 1.1svh, 0.9rem);
+      letter-spacing: clamp(0.18em, 0.7vw, 0.55em);
     }
 
     .bottom-script {
-      margin-top: 8px;
+      margin-top: 4px;
       font-family: "Great Vibes", cursive;
-      font-size: 2.2rem;
+      font-size: clamp(1.35rem, 3.4svh, 2.2rem);
       color: #d6b176;
+      line-height: 1;
     }
 
     .overlay {
@@ -296,7 +318,7 @@
 
     .overlay-panel {
       width: min(100%, 900px);
-      height: 88vh;
+      height: 88svh;
       background: #fff;
       border-radius: 18px;
       overflow: hidden;
@@ -335,104 +357,72 @@
 
     @media (max-width: 640px) {
       .page {
-        padding: 18px 0 28px;
+        padding: 10px 0;
+      }
+
+      .poster {
+        width: 100%;
       }
 
       .brand-logo {
-        width: min(290px, 82vw);
-        max-height: 170px;
+        width: min(280px, 78vw);
+        max-height: clamp(78px, 16svh, 145px);
       }
 
       .tagline {
-        margin-top: 34px;
-      }
-
-      .tagline-main {
-        font-size: 0.78rem;
-        letter-spacing: 0.3em;
-      }
-
-      .tagline-script {
-        font-size: 2.6rem;
-      }
-
-      .tagline-small {
-        margin-top: 24px;
-        font-size: 0.64rem;
-        letter-spacing: 0.24em;
+        margin-top: clamp(8px, 2.2svh, 24px);
       }
 
       .experience-box {
         width: 92%;
-        margin-top: 34px;
-        padding: 32px 18px 26px;
-        border-radius: 110px 110px 0 0;
-      }
-
-      .choose-small {
-        font-size: 0.72rem;
-        letter-spacing: 0.32em;
-      }
-
-      .choose-big {
-        font-size: 4rem;
       }
 
       .cards {
-        gap: 16px;
-      }
-
-      .card {
-        height: 280px;
-        border-radius: 90px 90px 0 0;
-      }
-
-      .card-photo {
-        border-radius: 90px 90px 0 0;
-      }
-
-      .monogram {
-        width: 48px;
-        height: 48px;
-        top: -23px;
-      }
-
-      .card-content {
-        bottom: 18px;
-      }
-
-      .card-content h3 {
-        font-size: 2.05rem;
-      }
-
-      .card-content p {
-        font-size: 0.62rem;
-        letter-spacing: 0.28em;
-      }
-
-      .line {
-        margin: 12px auto 10px;
+        gap: clamp(9px, 3vw, 16px);
       }
 
       .view {
-        font-size: 0.54rem;
-        gap: 7px;
-        letter-spacing: 0.18em;
+        font-size: clamp(0.43rem, 0.95svh, 0.54rem);
+      }
+    }
+
+    @media (max-height: 700px) {
+      .tagline-small {
+        display: none;
       }
 
-      .arrow {
-        width: 28px;
-        height: 28px;
-        font-size: 1rem;
+      .tagline-script {
+        font-size: clamp(1.6rem, 4svh, 2.5rem);
       }
 
-      .bottom-bold {
-        font-size: 0.66rem;
-        letter-spacing: 0.35em;
+      .experience-box {
+        margin-top: clamp(10px, 2svh, 20px);
       }
 
-      .bottom-script {
-        font-size: 1.7rem;
+      .bottom-line {
+        margin-top: clamp(8px, 1.8svh, 18px);
+      }
+    }
+
+    @media (max-height: 580px) {
+      .tagline {
+        display: none;
+      }
+
+      .brand-logo {
+        max-height: 70px;
+      }
+
+      .experience-box {
+        margin-top: 10px;
+      }
+
+      .card {
+        height: clamp(150px, 36svh, 210px);
+      }
+
+      .bottom-line {
+        display: none;
       }
     }
   </style>
@@ -548,22 +538,17 @@
 
     function closePDF() {
       overlay.classList.remove("open");
-
       setTimeout(() => {
         pdfFrame.src = "";
       }, 250);
     }
 
     overlay.addEventListener("click", function(e) {
-      if (e.target === overlay) {
-        closePDF();
-      }
+      if (e.target === overlay) closePDF();
     });
 
     document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") {
-        closePDF();
-      }
+      if (e.key === "Escape") closePDF();
     });
   </script>
 </body>
