@@ -10,7 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -93,34 +93,46 @@
       background: transparent;
     }
 
+    /* UPDATED READABLE TAGLINE */
     .tagline {
-      margin-top: clamp(10px, 2.7svh, 34px);
+      margin-top: clamp(10px, 2.4svh, 28px);
+      background: rgba(48, 57, 44, 0.92);
+      border: 1px solid rgba(214, 177, 118, 0.55);
+      border-radius: 22px;
+      padding: clamp(12px, 2svh, 20px) clamp(18px, 4vw, 34px);
       color: #ffffff;
+      box-shadow: 0 16px 38px rgba(0,0,0,0.24);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
     }
 
     .tagline-main {
-      font-size: clamp(0.62rem, 1.25svh, 1rem);
-      letter-spacing: clamp(0.18em, 0.75vw, 0.42em);
-      font-weight: 500;
+      font-size: clamp(0.78rem, 1.55svh, 1.12rem);
+      letter-spacing: clamp(0.16em, 0.45vw, 0.28em);
+      font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+      line-height: 1.25;
     }
 
     .tagline-script {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(1.8rem, 4.5svh, 3.1rem);
-      color: #a77348;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.75rem, 4.2svh, 3rem);
+      font-weight: 700;
+      color: #f2d28b;
       line-height: 1;
-      margin-top: 2px;
+      margin-top: 5px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.45);
     }
 
     .tagline-small {
-      margin-top: clamp(8px, 2svh, 24px);
-      font-size: clamp(0.52rem, 1.1svh, 0.85rem);
-      letter-spacing: clamp(0.14em, 0.65vw, 0.35em);
-      line-height: 1.6;
-      color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      margin-top: clamp(8px, 1.5svh, 16px);
+      font-size: clamp(0.62rem, 1.2svh, 0.9rem);
+      letter-spacing: clamp(0.10em, 0.38vw, 0.22em);
+      line-height: 1.65;
+      color: #fff8e7;
+      font-weight: 600;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.45);
     }
 
     .experience-box {
@@ -373,7 +385,25 @@
       }
 
       .tagline {
+        width: 88%;
         margin-top: clamp(8px, 2.2svh, 24px);
+        padding: 12px 14px;
+        border-radius: 18px;
+      }
+
+      .tagline-main {
+        font-size: clamp(0.72rem, 1.35svh, 0.9rem);
+        letter-spacing: 0.14em;
+      }
+
+      .tagline-script {
+        font-size: clamp(1.65rem, 3.8svh, 2.3rem);
+      }
+
+      .tagline-small {
+        font-size: clamp(0.58rem, 1.08svh, 0.72rem);
+        letter-spacing: 0.08em;
+        line-height: 1.55;
       }
 
       .experience-box {
