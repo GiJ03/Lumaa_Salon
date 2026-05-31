@@ -10,9 +10,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    @font-face {
+      font-family: "Ignogito";
+      src: url("Ignogito.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -27,13 +35,16 @@
       --dark-olive: #30392c;
       --deep-brown: #5f4b3b;
       --gold-soft: #f3d8a8;
+
+      --font-body: "Manrope", sans-serif;
+      --font-display: "Ignogito", "Manrope", sans-serif;
     }
 
     html,
     body {
       width: 100%;
       height: 100%;
-      font-family: "Jost", sans-serif;
+      font-family: var(--font-body);
       background: var(--olive);
       overflow: hidden;
     }
@@ -133,16 +144,17 @@
     }
 
     .tagline-main {
+      font-family: var(--font-body);
       font-size: clamp(0.78rem, 1.55svh, 1.12rem);
       letter-spacing: clamp(0.12em, 0.45vw, 0.26em);
-      font-weight: 700;
+      font-weight: 800;
       color: var(--white-soft);
       text-shadow: 0 2px 8px rgba(0,0,0,0.35);
       line-height: 1.3;
     }
 
     .tagline-script {
-      font-family: "Cormorant Garamond", serif;
+      font-family: var(--font-display);
       font-size: clamp(1.85rem, 4.2svh, 3.1rem);
       font-weight: 700;
       color: var(--cream);
@@ -153,11 +165,12 @@
 
     .tagline-small {
       margin-top: clamp(9px, 1.5svh, 16px);
+      font-family: var(--font-body);
       font-size: clamp(0.62rem, 1.2svh, 0.9rem);
       letter-spacing: clamp(0.08em, 0.36vw, 0.2em);
       line-height: 1.65;
       color: var(--white-soft);
-      font-weight: 600;
+      font-weight: 700;
       text-shadow: 0 2px 8px rgba(0,0,0,0.35);
     }
 
@@ -182,18 +195,19 @@
     }
 
     .choose-small {
+      font-family: var(--font-body);
       font-size: clamp(0.64rem, 1.25svh, 1rem);
       letter-spacing: clamp(0.18em, 0.7vw, 0.42em);
-      font-weight: 600;
+      font-weight: 700;
       color: var(--white-soft);
     }
 
     .choose-big {
-      font-family: "Cormorant Garamond", serif;
+      font-family: var(--font-display);
       font-size: clamp(2.8rem, 7.4svh, 6.6rem);
       line-height: 0.85;
       color: var(--cream);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .cards {
@@ -287,7 +301,7 @@
     }
 
     .card-content h3 {
-      font-family: "Cormorant Garamond", serif;
+      font-family: var(--font-display);
       font-size: clamp(1.8rem, 5svh, 3.3rem);
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -298,10 +312,11 @@
 
     .card-content p {
       margin-top: 5px;
+      font-family: var(--font-body);
       font-size: clamp(0.52rem, 1.1svh, 0.9rem);
       letter-spacing: clamp(0.16em, 0.6vw, 0.38em);
       color: var(--cream);
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .line {
@@ -316,10 +331,11 @@
       align-items: center;
       justify-content: center;
       gap: clamp(6px, 1.6vw, 14px);
+      font-family: var(--font-body);
       font-size: clamp(0.48rem, 1svh, 0.72rem);
       letter-spacing: clamp(0.12em, 0.5vw, 0.3em);
       color: var(--cream);
-      font-weight: 700;
+      font-weight: 800;
       white-space: nowrap;
     }
 
@@ -343,15 +359,16 @@
     }
 
     .bottom-bold {
+      font-family: var(--font-body);
       font-size: clamp(0.54rem, 1.1svh, 0.9rem);
       letter-spacing: clamp(0.16em, 0.65vw, 0.46em);
-      font-weight: 600;
+      font-weight: 700;
       color: var(--white-soft);
     }
 
     .bottom-script {
       margin-top: 5px;
-      font-family: "Great Vibes", cursive;
+      font-family: var(--font-display);
       font-size: clamp(1.35rem, 3.4svh, 2.2rem);
       color: var(--cream);
       line-height: 1;
@@ -392,7 +409,8 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid rgba(147,123,103,0.24);
-      font-weight: 700;
+      font-family: var(--font-body);
+      font-weight: 800;
       color: var(--dark-olive);
       flex-shrink: 0;
       background: var(--cream);
@@ -407,6 +425,7 @@
       cursor: pointer;
       font-size: 22px;
       color: var(--white-soft);
+      font-family: var(--font-body);
     }
 
     iframe {
