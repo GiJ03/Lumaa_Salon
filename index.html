@@ -32,19 +32,16 @@
       --olive: #9CA175;
       --white-soft: #F1F1F1;
       --brown: #937B67;
-      --dark-olive: #30392c;
-      --deep-brown: #5f4b3b;
-      --gold-soft: #f3d8a8;
-
-      --font-body: "Manrope", sans-serif;
-      --font-display: "Ignogito", "Manrope", sans-serif;
+      --dark-olive: #30392C;
+      --deep-brown: #5F4B3B;
+      --soft-shadow: rgba(47, 57, 44, 0.42);
     }
 
     html,
     body {
       width: 100%;
       height: 100%;
-      font-family: var(--font-body);
+      font-family: "Manrope", sans-serif;
       background: var(--olive);
       overflow: hidden;
     }
@@ -61,7 +58,7 @@
         radial-gradient(circle at 16% 14%, rgba(238, 217, 191, 0.75), transparent 26%),
         radial-gradient(circle at 86% 16%, rgba(241, 241, 241, 0.36), transparent 24%),
         radial-gradient(circle at 76% 82%, rgba(147, 123, 103, 0.46), transparent 32%),
-        linear-gradient(135deg, #9CA175 0%, #90966c 52%, #937B67 100%);
+        linear-gradient(135deg, #9CA175 0%, #90966C 52%, #937B67 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -74,11 +71,11 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(120deg, rgba(255,255,255,0.16) 0%, transparent 28%, rgba(238,217,191,0.18) 54%, transparent 78%),
+        linear-gradient(120deg, rgba(255,255,255,0.14) 0%, transparent 28%, rgba(238,217,191,0.16) 54%, transparent 78%),
         repeating-linear-gradient(
           135deg,
-          rgba(241,241,241,0.055) 0px,
-          rgba(241,241,241,0.055) 1px,
+          rgba(241,241,241,0.05) 0px,
+          rgba(241,241,241,0.05) 1px,
           transparent 1px,
           transparent 18px
         );
@@ -118,8 +115,8 @@
     }
 
     .brand-logo {
-      width: min(380px, 78vw);
-      max-height: clamp(80px, 18svh, 180px);
+      width: min(370px, 76vw);
+      max-height: clamp(80px, 17svh, 175px);
       height: auto;
       display: block;
       margin: 0 auto;
@@ -132,8 +129,7 @@
     .tagline {
       width: min(92%, 600px);
       margin-top: clamp(10px, 2.4svh, 28px);
-      background:
-        linear-gradient(135deg, rgba(147,123,103,0.96), rgba(95,75,59,0.96));
+      background: linear-gradient(135deg, rgba(147,123,103,0.96), rgba(95,75,59,0.96));
       border: 1px solid rgba(238,217,191,0.78);
       border-radius: 26px;
       padding: clamp(14px, 2.1svh, 22px) clamp(18px, 4vw, 38px);
@@ -144,9 +140,9 @@
     }
 
     .tagline-main {
-      font-family: var(--font-body);
-      font-size: clamp(0.78rem, 1.55svh, 1.12rem);
-      letter-spacing: clamp(0.12em, 0.45vw, 0.26em);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(0.78rem, 1.45svh, 1.05rem);
+      letter-spacing: clamp(0.18em, 0.44vw, 0.32em);
       font-weight: 800;
       color: var(--white-soft);
       text-shadow: 0 2px 8px rgba(0,0,0,0.35);
@@ -154,21 +150,23 @@
     }
 
     .tagline-script {
-      font-family: var(--font-display);
-      font-size: clamp(1.85rem, 4.2svh, 3.1rem);
-      font-weight: 700;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(1.7rem, 3.9svh, 2.8rem);
+      font-weight: 500;
+      font-style: italic;
       color: var(--cream);
       line-height: 1;
-      margin-top: 6px;
+      margin-top: 8px;
+      letter-spacing: -0.04em;
       text-shadow: 0 2px 10px rgba(0,0,0,0.35);
     }
 
     .tagline-small {
-      margin-top: clamp(9px, 1.5svh, 16px);
-      font-family: var(--font-body);
-      font-size: clamp(0.62rem, 1.2svh, 0.9rem);
-      letter-spacing: clamp(0.08em, 0.36vw, 0.2em);
-      line-height: 1.65;
+      margin-top: clamp(10px, 1.5svh, 16px);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(0.62rem, 1.15svh, 0.86rem);
+      letter-spacing: clamp(0.12em, 0.34vw, 0.24em);
+      line-height: 1.7;
       color: var(--white-soft);
       font-weight: 700;
       text-shadow: 0 2px 8px rgba(0,0,0,0.35);
@@ -177,15 +175,14 @@
     .experience-box {
       width: min(94%, 740px);
       margin: clamp(16px, 3svh, 36px) auto 0;
-      background:
-        linear-gradient(180deg, rgba(48,57,44,0.98), rgba(56,63,49,0.97));
+      background: linear-gradient(180deg, rgba(48,57,44,0.98), rgba(56,63,49,0.97));
       border: 1px solid rgba(238,217,191,0.78);
       border-radius: clamp(86px, 15svh, 180px) clamp(86px, 15svh, 180px) 24px 24px;
       padding:
         clamp(24px, 3.8svh, 40px)
         clamp(14px, 4vw, 34px)
         clamp(18px, 2.8svh, 34px);
-      box-shadow: 0 30px 80px rgba(47, 57, 44, 0.42);
+      box-shadow: 0 30px 80px var(--soft-shadow);
       overflow: visible;
     }
 
@@ -195,19 +192,20 @@
     }
 
     .choose-small {
-      font-family: var(--font-body);
-      font-size: clamp(0.64rem, 1.25svh, 1rem);
-      letter-spacing: clamp(0.18em, 0.7vw, 0.42em);
-      font-weight: 700;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(0.64rem, 1.2svh, 0.95rem);
+      letter-spacing: clamp(0.22em, 0.68vw, 0.44em);
+      font-weight: 800;
       color: var(--white-soft);
     }
 
     .choose-big {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7.4svh, 6.6rem);
-      line-height: 0.85;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.6rem, 7svh, 5.9rem);
+      line-height: 0.95;
       color: var(--cream);
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: -0.06em;
     }
 
     .cards {
@@ -301,22 +299,24 @@
     }
 
     .card-content h3 {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 5svh, 3.3rem);
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(1.8rem, 4.9svh, 3.1rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
       line-height: 1;
+      text-transform: lowercase;
       color: var(--white-soft);
       text-shadow: 0 3px 12px rgba(0,0,0,0.6);
     }
 
     .card-content p {
-      margin-top: 5px;
-      font-family: var(--font-body);
-      font-size: clamp(0.52rem, 1.1svh, 0.9rem);
-      letter-spacing: clamp(0.16em, 0.6vw, 0.38em);
+      margin-top: 7px;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(0.52rem, 1.05svh, 0.86rem);
+      letter-spacing: clamp(0.18em, 0.55vw, 0.34em);
       color: var(--cream);
       font-weight: 800;
+      text-transform: uppercase;
     }
 
     .line {
@@ -331,12 +331,13 @@
       align-items: center;
       justify-content: center;
       gap: clamp(6px, 1.6vw, 14px);
-      font-family: var(--font-body);
+      font-family: "Manrope", sans-serif;
       font-size: clamp(0.48rem, 1svh, 0.72rem);
       letter-spacing: clamp(0.12em, 0.5vw, 0.3em);
       color: var(--cream);
       font-weight: 800;
       white-space: nowrap;
+      text-transform: uppercase;
     }
 
     .arrow {
@@ -359,19 +360,23 @@
     }
 
     .bottom-bold {
-      font-family: var(--font-body);
-      font-size: clamp(0.54rem, 1.1svh, 0.9rem);
-      letter-spacing: clamp(0.16em, 0.65vw, 0.46em);
-      font-weight: 700;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(0.54rem, 1.1svh, 0.88rem);
+      letter-spacing: clamp(0.18em, 0.65vw, 0.46em);
+      font-weight: 800;
       color: var(--white-soft);
+      text-transform: uppercase;
     }
 
     .bottom-script {
-      margin-top: 5px;
-      font-family: var(--font-display);
-      font-size: clamp(1.35rem, 3.4svh, 2.2rem);
+      margin-top: 6px;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(1.25rem, 3.15svh, 2.05rem);
       color: var(--cream);
       line-height: 1;
+      font-weight: 500;
+      font-style: italic;
+      letter-spacing: -0.05em;
     }
 
     .overlay {
@@ -409,7 +414,7 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid rgba(147,123,103,0.24);
-      font-family: var(--font-body);
+      font-family: "Manrope", sans-serif;
       font-weight: 800;
       color: var(--dark-olive);
       flex-shrink: 0;
@@ -425,7 +430,7 @@
       cursor: pointer;
       font-size: 22px;
       color: var(--white-soft);
-      font-family: var(--font-body);
+      font-family: "Manrope", sans-serif;
     }
 
     iframe {
@@ -462,7 +467,7 @@
       }
 
       .tagline-script {
-        font-size: clamp(1.65rem, 3.8svh, 2.3rem);
+        font-size: clamp(1.55rem, 3.55svh, 2.15rem);
       }
 
       .tagline-small {
@@ -490,7 +495,7 @@
       }
 
       .tagline-script {
-        font-size: clamp(1.6rem, 4svh, 2.5rem);
+        font-size: clamp(1.45rem, 3.7svh, 2.25rem);
       }
 
       .experience-box {
@@ -563,10 +568,10 @@
               <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=90" alt="Men Rate Card">
             </div>
             <div class="card-content">
-              <h3>MEN</h3>
-              <p>RATE CARD</p>
+              <h3>men</h3>
+              <p>Rate Card</p>
               <div class="line"></div>
-              <div class="view">VIEW RATE CARD <span class="arrow">→</span></div>
+              <div class="view">View Rate Card <span class="arrow">→</span></div>
             </div>
           </article>
 
@@ -578,10 +583,10 @@
               <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=90" alt="Women Rate Card">
             </div>
             <div class="card-content">
-              <h3>WOMEN</h3>
-              <p>RATE CARD</p>
+              <h3>women</h3>
+              <p>Rate Card</p>
               <div class="line"></div>
-              <div class="view">VIEW RATE CARD <span class="arrow">→</span></div>
+              <div class="view">View Rate Card <span class="arrow">→</span></div>
             </div>
           </article>
 
